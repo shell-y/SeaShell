@@ -87,7 +87,8 @@ body{
 
 .menu a img{
     max-height: 6vw;
-    transition: all 0.2s ease;
+    transition: transform 0.4s ease;
+    transition: filter 0.8s ease;
     
     cursor: url(https://cur.cursors-4u.net/toons/too-7/too635.cur), pointer;
 }
@@ -95,6 +96,7 @@ body{
 .menu a img:hover{
     transform: scale(1.1);
     transform: rotate(10deg);
+    filter: hue-rotate(-300deg) saturate(150%);
 }
 
 .btn1{
