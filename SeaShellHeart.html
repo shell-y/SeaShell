@@ -15,8 +15,8 @@
     </div>
 
     <div class="menu">
-        <a href="#" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
-        <a href="#" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
+        <a href="#" id="btn1" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
+        <a href="SeaShellHeart.html" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
         <a href="#" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
         <a href="#" class="btn4"><img src="Prototipo/Shell/PNGs/btn_sobre.png"></a>
     </div>
@@ -25,11 +25,31 @@
         <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
         <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
     </div>
-    <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.voluptatem sequi nesciunt.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.voluptatem sequi nesciunt.
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.voluptatem sequi nesciunt.
-    </div>
+    <div id="content" class="content">
+       </div>
 </div>
 </body>
 </html>
+
+<script>
+    document.getElementById('btn1').addEventListener('click', function (event) {
+        event.preventDefault(); // Evita o comportamento padrão do link
+        const contentDiv = document.getElementById('content'); // Seleciona a div onde o conteúdo será carregado
+        
+        // Faz a requisição para carregar o arquivo HTML
+        fetch('divLorem.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+            })
+            .catch(error => {
+                console.error('Erro:', error); // Exibe o erro no console
+                contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo. Tente novamente mais tarde.</p>';
+            });
+    });
+</script>
