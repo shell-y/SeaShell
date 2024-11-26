@@ -1,0 +1,52 @@
+<style>
+.input-container{
+	position:relative;
+	margin-bottom:2vh;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:1.1vw;
+	color:#fff;
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #fff;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:1vw;
+  color: #fff;
+  text-shadow: #0c5f7c 1px 1px;
+  cursor: text;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px dashed #fff;
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-1vh;
+	font-size:0.8vw;
+}
+</style>
+
+<div style="transform: scaleX(-1); margin-top: 12px;">
+<!-- Nome:
+<br>
+<input type="text" placeholder="Digite"> -->
+
+<div class="input-container">
+    <input type="text" required=""/>
+    <label>Nome</label>		
+</div>
+<div class="input-container">		
+    <input type="mail" required=""/>
+    <label>Email</label>
+</div>
+
+
+</div>

@@ -1,43 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
+    <link rel="icon"
+        href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
     <title> ✦·┈๑⋅⋯ 𝐒𝐞𝐚𝐒𝐡𝐞𝐥𝐥 𝐇𝐞𝐚𝐫𝐭 ⋯⋅๑┈·✦</title>
 
     <link href="seashell.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
-    <div class="logo">
-        <a href="SeaShellHeart.html"><img src="Prototipo/Shell/LOGO.png"></a>
-    </div>
+        <div class="logo">
+            <a href="SeaShellHeart.html"><img src="Prototipo/Shell/LOGO.png"></a>
+        </div>
 
-    <div class="menu">
-        <a href="#" id="btn1" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
-        <a href="SeaShellHeart.html" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
-        <a href="#" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
-        <a href="#" class="btn4"><img src="Prototipo/Shell/PNGs/btn_sobre.png"></a>
+        <div class="menu">
+            <a onclick="pagInicial()" id="btn1" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
+            <a onclick="perfil()" id="btn2" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
+            <a href="#" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
+            <a onclick="sobreMim()" class="btn4"><img src="Prototipo/Shell/PNGs/btn_sobre.png"></a>
+        </div>
+        <div class="topo">
+            <!-- <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif" alt=""> -->
+            <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
+            <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
+        </div>
+        <div id="content" class="content"></div>
     </div>
-    <div class="topo">
-        <!-- <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif" alt=""> -->
-        <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
-        <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
-    </div>
-    <div id="content" class="content">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.voluptatem sequi nesciunt.
-    </div>
-</div>
 </body>
+
 </html>
 
+<!-- Carregar a div da Home ao carregar a página -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>$(document).ready(function () { $('#content').load('home.html'); } )</script>
+
+<!-- Demais scripts -->
 <script>
-    document.getElementById('btn1').addEventListener('click', function (event) {
-        event.preventDefault(); // Evita o comportamento padrão do link
-        const contentDiv = document.getElementById('content'); // Seleciona a div onde o conteúdo será carregado
-        
-        // Faz a requisição para carregar o arquivo HTML
+    const contentDiv = document.getElementById('content');
+
+    function pagInicial() {
+        fetch('home.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+            })
+            .catch(error => {
+                console.error('Erro:', error); // Exibe o erro no console
+                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar HOME. Tente novamente mais tarde.</p>';
+            });
+    }
+
+    function sobreMim() {
         fetch('divLorem.html')
             .then(response => {
                 if (!response.ok) {
@@ -50,7 +72,24 @@
             })
             .catch(error => {
                 console.error('Erro:', error); // Exibe o erro no console
-                contentDiv.innerHTML = '<p>Erro ao carregar o conteúdo. Tente novamente mais tarde.</p>';
+                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar SOBRE. Tente novamente mais tarde.</p>';
             });
-    });
+    }
+
+    function perfil() {
+        fetch('cadastro.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+            })
+            .catch(error => {
+                console.error('Erro:', error); // Exibe o erro no console
+                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar PERFIL. Tente novamente mais tarde.</p>';
+            });
+    }
 </script>
