@@ -20,7 +20,7 @@
         <div class="menu">
             <a onclick="pagInicial()" id="btn1" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
             <a onclick="perfil()" id="btn2" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
-            <a href="#" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
+            <a onclick="quizInicio()" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
             <a onclick="sobreMim()" class="btn4"><img src="Prototipo/Shell/PNGs/btn_sobre.png"></a>
         </div>
         <div class="topo">
@@ -36,7 +36,7 @@
 
 <!-- Carregar a div da Home ao carregar a página -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>$(document).ready(function () { $('#content').load('home.html'); } )</script>
+<script>$(document).ready(function () { $('#content').load('home.html'); })</script>
 
 <!-- Demais scripts -->
 <script>
@@ -91,5 +91,67 @@
                 console.error('Erro:', error); // Exibe o erro no console
                 contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar PERFIL. Tente novamente mais tarde.</p>';
             });
+    }
+
+    function quizInicio() {
+        fetch('quizInicio.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+            })
+            .catch(error => {
+                console.error('Erro:', error); // Exibe o erro no console
+                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar HOME. Tente novamente mais tarde.</p>';
+            });
+    }
+</script>
+
+<!-- SCRIPTS SENHA -->
+<script>
+    function verSenha() {
+        var senhaInput = document.getElementById('inputSenha')
+        var visualizarIcone = document.getElementById('idVisualizar')
+
+        if (senhaInput.type == "password") {
+            senhaInput.type = "text"
+            visualizarIcone.src = 'https://icons.veryicon.com/png/o/internet--web/property-2/closed-eyes.png'
+        } else {
+            senhaInput.type = "password"
+            visualizarIcone.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
+        }
+    }
+
+    function verSenhaVerificar() {
+        var senhaInputVerify = document.getElementById('inputSenhaVerificar')
+        var visualizarIconeVerify = document.getElementById('idVisualizarVerificar')
+
+        if (senhaInputVerify.type == "password") {
+            senhaInputVerify.type = "text"
+            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/internet--web/property-2/closed-eyes.png'
+        } else {
+            senhaInputVerify.type = "password"
+            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
+        }
+    }
+
+    function verificarSenha(){
+        var senhaInput = document.getElementById('inputSenha')
+        var senhaInputVerify = document.getElementById('inputSenhaVerificar')
+        var label = document.getElementById('labelVerificar')
+
+        if(senhaInputVerify.value != senhaInput.value){
+            // label.innerHTML='Confirme a senha <img src="https://64.media.tumblr.com/195aa4df5fec4cea6f5d597c695ef756/7cf915f60095705b-31/s75x75_c1/99901ca014db2811e368d6c30932ce8da362984b.gif" style="height:2vh; vertical-align: middle;">'
+            label.innerHTML='Confirme a senha <img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;">'
+            // label.innerHTML='Confirme a senha <img src="http://i11.photobucket.com/albums/a168/evelynregly/minigifs/xiss.gif" style="max-height:2vh; vertical-align: middle;">'
+        }else{
+            // senhaInputVerify.style='initial-value'
+            label.innerHTML='Confirme a senha'
+        }
+        
     }
 </script>
