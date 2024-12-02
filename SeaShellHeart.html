@@ -12,6 +12,16 @@
 </head>
 
 <body>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="iframeContent" src=""
+                style="width: 100%; height: 85vh; border: none;  border-radius: 10px;"></iframe>
+        </div>
+    </div>
+
+
     <div class="container">
         <div class="logo">
             <a href="SeaShellHeart.html"><img src="Prototipo/Shell/LOGO.png"></a>
@@ -139,19 +149,52 @@
         }
     }
 
-    function verificarSenha(){
+    function verificarSenha() {
         var senhaInput = document.getElementById('inputSenha')
         var senhaInputVerify = document.getElementById('inputSenhaVerificar')
         var label = document.getElementById('labelVerificar')
 
-        if(senhaInputVerify.value != senhaInput.value){
+        if (senhaInputVerify.value != senhaInput.value) {
             // label.innerHTML='Confirme a senha <img src="https://64.media.tumblr.com/195aa4df5fec4cea6f5d597c695ef756/7cf915f60095705b-31/s75x75_c1/99901ca014db2811e368d6c30932ce8da362984b.gif" style="height:2vh; vertical-align: middle;">'
-            label.innerHTML='Confirme a senha <img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;">'
+            label.innerHTML = 'Confirme a senha <img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;">'
             // label.innerHTML='Confirme a senha <img src="http://i11.photobucket.com/albums/a168/evelynregly/minigifs/xiss.gif" style="max-height:2vh; vertical-align: middle;">'
-        }else{
+        } else {
             // senhaInputVerify.style='initial-value'
-            label.innerHTML='Confirme a senha'
+            label.innerHTML = 'Confirme a senha'
         }
-        
+
     }
+</script>
+
+<!-- SCRIPT POP-UP -->
+<script>
+    const modal = document.getElementById('myModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.querySelector('.close-btn');
+    const iframeContent = document.getElementById('iframeContent');
+
+    // Usa o event delegation para capturar cliques no botão "openModalBtn"
+    contentDiv.addEventListener('click', (event) => {
+        // Verifica se o elemento clicado ou algum ancestral tem o ID "openModalBtn"
+        const target = event.target.closest('#openModalBtn');
+        if (target) {
+            // Configura o modal e exibe
+            iframeContent.src = "quiz.html"; // Página que será exibida no iframe
+            modal.style.display = "block";
+        }
+    });
+
+    // Fecha o modal ao clicar no botão de fechar
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        iframeContent.src = ""; // Limpa o iframe
+    });
+
+    // Fecha o modal ao clicar fora dele
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            iframeContent.src = "";
+        }
+    });
 </script>

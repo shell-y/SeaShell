@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&family=Ole&family=Parisienne&display=swap');
+
+* {
+    /* cursor: url(@assets/cursor_bubble.gif) 30 25, auto; */
+    cursor: url(https://cur.cursors-4u.net/nature/nat-4/nat340.png), auto;
+    /* cursor: url(@assets/cursor_shell.gif) 2 5, auto; */
+    /* cursor: url(https://cur.cursors-4u.net/toons/too-7/too635.cur), auto; */
+}
+
+body {
+    margin: 0;
+    background-image: url(@assets/Quiz/cenario1.webp);
+    background-repeat: repeat-y;
+    background-position: top;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: static;
+    overflow: hidden;
+
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    padding: 10px;
+    
+}
+
+.content {
+    font-family: "Imprima", sans-serif;
+    font-size: 1.8em;
+    font-weight: 200;
+    color: #fff;
+    text-shadow: #0c5f7c 1px 1px;
+    width: 80%;
+    text-align: center;
+}
+
+.alternativas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin-top: 10vh;
+}
+
+.opcao {
+    margin: 2vh;
+    max-width: 30vw;
+}
+
+
+.logo a img {
+    max-height: 20vh;
+    position: absolute;
+    margin-top: 5vh;
+    margin-left: 5vw;
+
+    z-index: 2;
+}
+
+.logo a img:hover {
+    opacity: 0.7;
+    transition: ease-in-out 0.3s;
+
+    cursor: url(https://cur.cursors-4u.net/toons/too-7/too635.cur), pointer;
+}
+
+@media (max-width:850px){
+    .content {
+        font-size: 1.5em;
+    }
+}
