@@ -14,6 +14,23 @@ body {
     background-position: top;
     background-size: cover;
     overflow: hidden;
+    transition: background 1s ease-in-out;
+}
+
+.innerContent {
+    opacity: 0; /* Inicialmente invisível */
+    transform: scale(0.95); /* Um leve efeito de zoom-out */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Suaviza opacidade e transformação */
+}
+
+.innerContent.show {
+    opacity: 1; /* Visível */
+    transform: scale(1); /* Volta ao tamanho normal */
+}
+
+.innerContent.hide {
+    opacity: 0;
+    transform: scale(1.05); /* Leve zoom-out ao desaparecer */
 }
 
 .container {
@@ -55,24 +72,21 @@ body {
 .opcao {
     margin: 2vh;
     max-width: 30vw;
+    cursor: pointer;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
-
-.logo a img {
-    max-height: 20vh;
-    position: absolute;
-    margin-top: 5vh;
-    margin-left: 5vw;
-
-    z-index: 2;
+.opcao:hover {
+transform: scale(1.1);
+text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
 }
 
-.logo a img:hover {
-    opacity: 0.7;
-    transition: ease-in-out 0.3s;
-
-    cursor: url(https://cur.cursors-4u.net/toons/too-7/too635.cur), pointer;
-}
 
 @media (max-width:850px){
     .content {
