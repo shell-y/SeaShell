@@ -109,6 +109,56 @@ body {
     filter: hue-rotate(-300deg) saturate(150%);
 }
 
+.glossy-button {
+    color: #fff;
+
+    text-shadow: 1px 1px #5132d8;
+
+    border-style: none;
+    /* border: solid 1px #7c4dff; */
+    border-radius: 30px;
+
+    padding: 8px;
+    margin-block: 10px;
+
+    box-shadow: 0px 2px #5132d8;
+    cursor: pointer;
+    position: relative;
+
+    /* animation: filter 0.3 ease; */
+}
+
+.glossy-button.btn {
+    background-color: #6140ef;
+}
+
+.glossy-button:hover {
+    transform: scale(1.1);
+    transition: 100ms;
+}
+
+.glossy-button:active {
+    transform: scale(1.0);
+    /* Aumenta o botão em 10% */
+}
+
+/* Efeito de brilho glossy */
+.glossy-button::before {
+    content: '';
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    left: 15%;
+    top: 8%;
+    align-items: center;
+    width: 70%;
+    height: 7%;
+    background: rgba(256, 256, 256, 0.8);
+    /* Brilho semi-transparente */
+    border-radius: 20px 20px 0px 0px;
+    /* Curva no topo */
+}
+
 .btn1 {
     margin-left: 7vw;
 }
@@ -128,7 +178,8 @@ body {
     margin-top: -2vh;
     margin-bottom: 10vh;
 }
-.textoImg{
+
+.textoImg {
     text-align: justify;
 }
 
@@ -142,7 +193,7 @@ body {
     padding-block: 5px;
 }
 
-h2{
+h2 {
     font-size: 1.35em;
 }
 
@@ -169,26 +220,29 @@ h2{
     /* box-shadow: 0px 2px rgba(132,217,255, 1); */
 
 }
+
 .linkQuiz:hover {
     background: url("https://64.media.tumblr.com/af3e0a77392e140e85fde631633cdefa/0d2d68465810e89c-15/s400x600/a15631682d8a3355094bfe779ec2670c011f04bd.gif");
-    background-color: rgba(187,234,255,0.5);
+    background-color: rgba(187, 234, 255, 0.5);
     border: 1px dashed #fff;
     transition: 0.2s ease;
 }
 
 .linkQuiz img {
-cursor: sw-resize;
-max-width: 17.7vw;
-vertical-align: middle;
+    cursor: sw-resize;
+    max-width: 17.7vw;
+    vertical-align: middle;
 }
+
 .linkQuiz img:hover {
-cursor: sw-resize;
+    cursor: sw-resize;
 }
 
 
 /* Estilo para o modal */
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
+    /* Escondido por padrão */
     position: fixed;
     top: 0;
     left: 0;
@@ -197,6 +251,7 @@ cursor: sw-resize;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
+
 .modal-content {
     position: absolute;
     top: 50%;
@@ -208,6 +263,7 @@ cursor: sw-resize;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
+
 .close-btn {
     float: right;
     font-size: 20px;
