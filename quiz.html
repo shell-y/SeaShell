@@ -152,6 +152,9 @@
     const cenaC3 = document.getElementById('cenaC3')
     const cenaD = document.getElementById('cenaD')
 
+    var perfilA = 0
+    var perfilB = 0
+
     function acoesA(opcao) {
         cenaA.classList.add('hide')
         setTimeout(() => {
@@ -168,6 +171,8 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilA++
         }
         else if (opcao.id === 'div2a') {
             cenaB2.style.display = 'block'
@@ -176,6 +181,8 @@
             setTimeout(() => {
                 cenaB2.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilB++
         }
     }
 
@@ -195,6 +202,8 @@
             setTimeout(() => {
                 cenaC1.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilA++
         }
         else if (opcao.id === 'div1c') {
             cenaC2.style.display = 'block'
@@ -203,6 +212,8 @@
             setTimeout(() => {
                 cenaC2.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilB++
         }
     }
     
@@ -222,6 +233,8 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilA++
         }
         else if (opcao.id === 'div2c') {
             cenaC3.style.display = 'block'
@@ -230,6 +243,8 @@
             setTimeout(() => {
                 cenaC3.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
+            perfilB++
         }
     }
 
@@ -250,6 +265,7 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilA++
         }
         else if (opcao.id === 'div1e') {
             /*cenaC3.style.display = 'block'
@@ -258,7 +274,9 @@
             setTimeout(() => {
                 cenaC3.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilB++
         }
+        return resultado()
     }
 
     //FINAL
@@ -278,6 +296,8 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilA++
+            return resultado()
         }
         else if (opcao.id === 'div1g') {
             cenaD.style.display = 'block'
@@ -286,6 +306,7 @@
             setTimeout(() => {
                 cenaD.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+            perfilB++
         }
     }
     //FINAL
@@ -305,6 +326,7 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+            perfilA++
         }
         else if (opcao.id === 'div2e') {
             /*cenaC3.style.display = 'block'
@@ -313,6 +335,9 @@
             setTimeout(() => {
                 cenaC3.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilB++
+
+            return resultado()
         }
     }
     //FINAL
@@ -332,6 +357,7 @@
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilA++
         }
         else if (opcao.id === 'div1i') {
             /*cenaC3.style.display = 'block'
@@ -340,6 +366,22 @@
             setTimeout(() => {
                 cenaC3.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
+            perfilB++
         }
+
+        return resultado()
+    }
+
+    function resultado(){
+        if(perfilA > perfilB){
+            alert(`Perfil A: ${perfilA} pontos`)
+        }
+        else if(perfilB > perfilA){
+            alert(`Perfil B: ${perfilB} pontos`)
+        }else{
+            alert(`Perfil C: ${perfilA} A e ${perfilB} B`)
+        }
+
+        return window.location.reload(true)
     }
 </script>
