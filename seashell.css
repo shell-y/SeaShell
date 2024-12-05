@@ -149,10 +149,10 @@ body {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
-    left: 15%;
+    left: 20%;
     top: 8%;
     align-items: center;
-    width: 70%;
+    width: 60%;
     height: 7%;
     background: rgba(256, 256, 256, 0.8);
     /* Brilho semi-transparente */

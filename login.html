@@ -1,0 +1,65 @@
+<style>
+  .input-container {
+    position: relative;
+    margin-bottom: 2vh;
+  }
+
+  .input-container label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-size: 1.1vw;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    text-shadow: #0c5f7c 0.5px 0.5px;
+  }
+
+  .input-container input {
+    border: 0;
+    border-bottom: 1px dashed #fff;
+    background: transparent;
+    width: 90%;
+    /* padding: 8px 0 5px 0; */
+    padding: 8px 0 5px 0;
+    font-size: 1vw;
+    color: #fff;
+    text-shadow: #0c5f7c 0.5px 0.5px;
+    cursor: text;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .input-container input:focus {
+    /* border: none; */
+    outline: none;
+    border: 1px dashed #fff;
+    background: rgba(256, 256, 256, 0.2);
+    border-radius: 30px;
+    padding-left: 8px;    
+    margin-top: 1vh;
+  }
+
+  .input-container input:focus~label,
+  .input-container input:valid~label {
+    top: -2vh;
+    font-size: 0.8vw;
+    margin-top: 1.1vh;
+  }
+</style>
+
+<div style="transform: scaleX(-1); margin-top: 12px; margin-block: 10px;">
+
+  <h2>Acesse o seu perfil</h2>
+
+  <div class="input-container">
+    <input type="text" required="">
+    <label>Usuário</label>
+  </div>
+  <div class="input-container">
+    <input type="password" id="inputSenha" style="width: 90% !important;" required="" onkeyup="verificarSenha()">
+    <label>Senha</label>
+    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
+    onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
+  </div>
+
+  <button class="glossy-button btn">Entrar</button>
+</div>

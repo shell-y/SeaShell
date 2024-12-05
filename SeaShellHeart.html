@@ -87,7 +87,7 @@
     }
 
     function perfil() {
-        fetch('cadastro.html')
+        fetch('perfil.html')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
@@ -96,6 +96,31 @@
             })
             .then(data => {
                 contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+
+                // Inicializa o Chart.js depois de carregar o HTML
+                const ctx = document.getElementById('myChart');
+                if (ctx) {
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                'Red',
+                                'Blue',
+                                'Yellow'
+                            ],
+                            datasets: [{
+                                label: 'My First Dataset',
+                                data: [300, 50, 100],
+                                backgroundColor: [
+                                    'rgb(255, 99, 132,0.6)',
+                                    'rgb(54, 162, 235,0.6)',
+                                    'rgb(255, 205, 86,0.6)'
+                                ],
+                                hoverOffset: 4
+                            }]
+                        }
+                    });
+                }
             })
             .catch(error => {
                 console.error('Erro:', error); // Exibe o erro no console
@@ -195,6 +220,32 @@
         if (e.target === modal) {
             modal.style.display = "none";
             iframeContent.src = "";
+        }
+    });
+</script>
+
+<!-- LINK CHARTJS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- SETTING UP -->
+<script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
     });
 </script>
