@@ -112,7 +112,7 @@ body {
 .glossy-button {
     color: #fff;
 
-    text-shadow: 1px 1px #5132d8;
+    text-shadow: 1px 1px #00b4d8;
 
     border-style: none;
     /* border: solid 1px #7c4dff; */
@@ -121,7 +121,7 @@ body {
     padding: 8px;
     margin-block: 10px;
 
-    box-shadow: 0px 2px #5132d8;
+    box-shadow: 0px 0.8px 1px #00b4d8;
     cursor: pointer;
     position: relative;
 
@@ -129,7 +129,8 @@ body {
 }
 
 .glossy-button.btn {
-    background-color: #6140ef;
+    /* background-color: #6140ef; */
+    background-color: rgba(100, 223, 223, 0.6);
 }
 
 .glossy-button:hover {
