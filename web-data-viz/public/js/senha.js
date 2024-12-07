@@ -1,6 +1,6 @@
-    function verSenha() {
-        var senhaInput = document.getElementById('inputSenhaCadastro')
-        var visualizarIcone = document.getElementById('idVisualizar')
+    function verSenha(idcampo,idimagem) {
+        var senhaInput = document.getElementById(idcampo)
+        var visualizarIcone = document.getElementById(idimagem)
 
         if (senhaInput.type == "password") {
             senhaInput.type = "text"
@@ -8,19 +8,6 @@
         } else {
             senhaInput.type = "password"
             visualizarIcone.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
-        }
-    }
-
-    function verSenhaVerificar() {
-        var senhaInputVerify = document.getElementById('inputSenhaVerificar')
-        var visualizarIconeVerify = document.getElementById('idVisualizarVerificar')
-
-        if (senhaInputVerify.type == "password") {
-            senhaInputVerify.type = "text"
-            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/internet--web/property-2/closed-eyes.png'
-        } else {
-            senhaInputVerify.type = "password"
-            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
         }
     }
 

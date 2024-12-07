@@ -3,16 +3,16 @@ var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
 
-    var email = req.body.emailServer;
+    var user = req.body.userServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
+    if (user == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(user, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -28,7 +28,7 @@ function autenticar(req, res) {
                             senha: resultadoAutenticar[0].senha,
                         });
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("User e/ou senha inválido(s)");
                     }
                 }
             ).catch(

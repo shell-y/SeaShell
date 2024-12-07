@@ -93,14 +93,14 @@
                         onkeyup="verificarSenha()" maxlength="8">
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
-                        onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
+                        onclick="verSenha('inputSenhaCadastro','idVisualizar')" style="cursor: pointer; width:20px; filter: invert();">
                 </div>
                 <div class="input-container">
                     <input type="password" id="inputSenhaVerificar" style="width: 90% !important;"
                         onkeyup="verificarSenha()" maxlength="8">
                     <label id="labelVerificar">Confirme a senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
-                        id="idVisualizarVerificar" onclick="verSenhaVerificar()"
+                        id="idVisualizarVerificar" onclick="verSenha('inputSenhaVerificar','idVisualizarVerificar')"
                         style="cursor: pointer; width:20px; filter: invert();">
                 </div>
 
@@ -112,16 +112,16 @@
 
                 <h2>Acesse o seu perfil</h2>
 
-                <div class="input-container" id="inputUsuarioLogin">
-                    <input type="text" maxlength="9">
+                <div class="input-container">
+                    <input type="text" maxlength="8" id="inputUsuarioLogin">
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
                     <input type="password" id="inputSenhaLogin" style="width: 90% !important;"  maxlength="8"
                         onkeyup="verificarSenha()">
                     <label>Senha</label>
-                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
-                        onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
+                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizarLogin"
+                        onclick="verSenha('inputSenhaLogin','idVisualizarLogin')" style="cursor: pointer; width:20px; filter: invert();">
                 </div>
 
                 <button class="glossy-button btn" onclick="autenticar()">Entrar</button>
