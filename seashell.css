@@ -22,6 +22,8 @@ body {
     background-size: cover;
     position: static;
     overflow: hidden;
+
+    z-index: 1;
 }
 
 .logo a img {
@@ -68,6 +70,8 @@ body {
     transform: scaleX(-1);
     scrollbar-color: rgb(254, 254, 254, 0) rgba(1, 1, 1, 0);
     scrollbar-width: thin;
+
+    z-index: 2;
 }
 
 .content:hover {
@@ -184,6 +188,11 @@ body {
     text-align: justify;
 }
 
+h2 {
+    font-size: 1.35em;
+}
+
+
 .faixaBubbles {
     /* background-image: url("https://64.media.tumblr.com/af3e0a77392e140e85fde631633cdefa/0d2d68465810e89c-15/s400x600/a15631682d8a3355094bfe779ec2670c011f04bd.gif"); */
     /* background-image: url("https://64.media.tumblr.com/db0ebe2a7cf0c58db655659f88e4d820/0d2d68465810e89c-61/s1280x1920/0c33f35f4addef2e34ec0aa1847141148257862f.gif"); */
@@ -194,9 +203,6 @@ body {
     padding-block: 5px;
 }
 
-h2 {
-    font-size: 1.35em;
-}
 
 .faixaBubbles2 {
     background-image: url("https://64.media.tumblr.com/af3e0a77392e140e85fde631633cdefa/0d2d68465810e89c-15/s400x600/a15631682d8a3355094bfe779ec2670c011f04bd.gif");
@@ -206,6 +212,18 @@ h2 {
     /* background-size: 250px; */
     width: 100%;
     padding-block: 5px;
+}
+
+.conteudoPerfil {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.conteudoPerfil p {
+    margin-top: 4vh;
+    font-size: 0.99vw;
 }
 
 .linkQuiz {
@@ -219,7 +237,31 @@ h2 {
     padding: 5px;
     /* background-color: rgba(187,234,255,0.5); */
     /* box-shadow: 0px 2px rgba(132,217,255, 1); */
+}
 
+.logout {
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    position: fixed;
+
+    margin-left: 91vw;
+    margin-top: 78vh;
+
+    /* max-width: 50vw; */
+
+    /* margin: 10px; */
+}
+.logout img{
+    cursor: pointer;
+}
+
+.logout .sair{
+    max-height: 2vh;
+    margin-top: -20px;
 }
 
 .linkQuiz:hover {

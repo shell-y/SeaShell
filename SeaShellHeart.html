@@ -38,7 +38,12 @@
             <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
             <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
         </div>
+        <div class="logout" alt="Clique aqui para sair" onclick="logout()">
+            <img src="@assets/linguadoTriste.gif">
+            <img src="@assets/sair.png" class="sair">
+        </div>
         <div id="content" class="content"></div>
+
     </div>
 </body>
 
@@ -52,40 +57,20 @@
 <script>
     const contentDiv = document.getElementById('content');
 
-    function pagInicial() {
-        fetch('home.html')
+    function carregarPagina(nomeArquivo, paginaNome) {
+        fetch(nomeArquivo)
             .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
-                }
+                if (!response.ok) throw new Error(`Erro ao carregar ${paginaNome}`);
                 return response.text();
             })
-            .then(data => {
-                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
-            })
-            .catch(error => {
-                console.error('Erro:', error); // Exibe o erro no console
-                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar HOME. Tente novamente mais tarde.</p>';
-            });
+            .then(data => contentDiv.innerHTML = data)
+            .catch(() => handleFetchError(paginaNome));
     }
 
-    function sobreMim() {
-        fetch('sobre.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
-                }
-                return response.text();
-            })
-            .then(data => {
-                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
-            })
-            .catch(error => {
-                console.error('Erro:', error); // Exibe o erro no console
-                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar SOBRE. Tente novamente mais tarde.</p>';
-            });
-    }
-
+    function pagInicial() { carregarPagina('home.html', 'HOME'); }
+    function sobreMim() { carregarPagina('sobre.html', 'SOBRE'); }
+    function quizInicio() { carregarPagina('quizInicio.html', 'QUIZ'); }
+    // function perfil() { carregarPagina('perfil.html', 'PERFIL'); }
     function perfil() {
         fetch('perfil.html')
             .then(response => {
@@ -104,21 +89,45 @@
                         type: 'doughnut',
                         data: {
                             labels: [
-                                'Red',
-                                'Blue',
-                                'Yellow'
+                                'Descobridor dos 7 Mares',
+                                'Concha Guardiã',
+                                'Sonhador das Marés'
                             ],
                             datasets: [{
-                                label: 'My First Dataset',
-                                data: [300, 50, 100],
+                                // label: ['Pontuação'],
+                                data: [50, 50, 30],
                                 backgroundColor: [
-                                    'rgb(255, 99, 132,0.6)',
-                                    'rgb(54, 162, 235,0.6)',
-                                    'rgb(255, 205, 86,0.6)'
+                                    'rgb(36, 200, 220, 0.6)', //AZUL
+                                    'rgb(179,139,221, 0.6)', //ROXO
+                                    'rgb(19,163,164, 0.6)' //VERDE
                                 ],
-                                hoverOffset: 4
+                                borderWidth: 0.5, // Define a largura da borda
+                                // borderDash: [2, 2], // Define o padrão da linha pontilhada
                             }]
+                        },
+
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        color: 'white', // Define a cor da fonte
+                                        font: {
+                                            size: 12, // Define o tamanho da fonte (opcional)
+                                            family: 'Imprima', // Define a família da fonte (opcional)
+                                            // style: 'italic' // Define o estilo (normal, italic, bold)
+                                        },
+                                        boxWidth: 10, // Largura do ícone da legenda
+                                        boxHeight: 10, // Altura do ícone da legenda
+                                        // useBorderRadius: true, // Torna o ícone com bordas arredondadas
+                                        borderWidth: 0.5, // Define a largura da borda dos ícones
+                                        usePointStyle: true, // Define ícones redondos
+                                        pointStyle: 'circle', // Estilo dos ícones (default é círculo)
+                                    }
+                                }
+                            },
                         }
+
                     });
                 }
             })
@@ -128,23 +137,10 @@
             });
     }
 
-    function quizInicio() {
-        fetch('quizInicio.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
-                }
-                return response.text();
-            })
-            .then(data => {
-                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
-            })
-            .catch(error => {
-                console.error('Erro:', error); // Exibe o erro no console
-                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar HOME. Tente novamente mais tarde.</p>';
-            });
-    }
+
 </script>
+
+
 
 <!-- SCRIPTS SENHA -->
 <script>
@@ -222,30 +218,27 @@
             iframeContent.src = "";
         }
     });
+
 </script>
+
+<script>
+    function exibirResultado(resultado) {
+        document.getElementById('perfilA').style.display = "none";
+        document.getElementById('perfilB').style.display = "none";
+        document.getElementById('perfilC').style.display = "none";
+
+
+        // Exibe o perfil correspondente ao resultado
+        if (resultado === 'A') {
+            document.getElementById('perfilA').style.display = "flex";
+        } else if (resultado === 'B') {
+            document.getElementById('perfilB').style.display = "flex";
+        } else if (resultado === 'C') {
+            document.getElementById('perfilC').style.display = "flex";
+        }
+    }
+</script>
+
 
 <!-- LINK CHARTJS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<!-- SETTING UP -->
-<script>
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>

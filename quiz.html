@@ -51,7 +51,8 @@
 
             <!-- INICIO CENA B2 -->
             <div class="innerContent" id="cenaB2" style="display: none;">
-                Conforme se afasta do reino, você encontra um arco natural de pedras coberto por musgos brilhantes. Algo na
+                Conforme se afasta do reino, você encontra um arco natural de pedras coberto por musgos brilhantes. Algo
+                na
                 estrutura parece mágico, e você percebe que pequenos peixes estão atravessando o arco e desaparecendo.
                 <br><br>
                 O que você faz?
@@ -216,7 +217,7 @@
             perfilB++
         }
     }
-    
+
     function acoesB2(opcao) {
         cenaB2.classList.add('hide')
         setTimeout(() => {
@@ -259,22 +260,14 @@
 
         cenaC1.style.display = 'none'
         if (opcao.id === 'div1d') {
-            /*cenaB1.style.display = 'block'
-            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
-
-            setTimeout(() => {
-                cenaB1.classList.add('show') // Adiciona a animação de entrada
-            }, 50)*/
             perfilA++
+            fecharModal()
+
         }
         else if (opcao.id === 'div1e') {
-            /*cenaC3.style.display = 'block'
-            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC3.webp')"
-
-            setTimeout(() => {
-                cenaC3.classList.add('show') // Adiciona a animação de entrada
-            }, 50)*/
             perfilB++
+            fecharModal()
+
         }
         return resultado()
     }
@@ -297,7 +290,9 @@
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
             perfilA++
-            return resultado()
+            resultado()
+            return fecharModal()
+
         }
         else if (opcao.id === 'div1g') {
             cenaD.style.display = 'block'
@@ -329,15 +324,11 @@
             perfilA++
         }
         else if (opcao.id === 'div2e') {
-            /*cenaC3.style.display = 'block'
-            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC3.webp')"
-
-            setTimeout(() => {
-                cenaC3.classList.add('show') // Adiciona a animação de entrada
-            }, 50)*/
             perfilB++
 
-            return resultado()
+            resultado()
+            fecharModal()
+
         }
     }
     //FINAL
@@ -358,30 +349,27 @@
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
             perfilA++
+            fecharModal()
         }
         else if (opcao.id === 'div1i') {
-            /*cenaC3.style.display = 'block'
-            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC3.webp')"
-
-            setTimeout(() => {
-                cenaC3.classList.add('show') // Adiciona a animação de entrada
-            }, 50)*/
             perfilB++
+            fecharModal()
         }
 
         return resultado()
     }
 
-    function resultado(){
-        if(perfilA > perfilB){
-            alert(`Perfil A: ${perfilA} pontos`)
-        }
-        else if(perfilB > perfilA){
-            alert(`Perfil B: ${perfilB} pontos`)
-        }else{
-            alert(`Perfil C: ${perfilA} A e ${perfilB} B`)
-        }
 
-        return window.location.reload(true)
+    function resultado() {
+
+        if (perfilA > perfilB) {
+            return exibirResultado('A');
+        }
+        else if (perfilB > perfilA) {
+            return exibirResultado('B');
+        } else {
+            return exibirResultado('C');
+        }
     }
+
 </script>
