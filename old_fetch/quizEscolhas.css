@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&family=Ole&family=Parisienne&display=swap');
+
+* {
+    /* cursor: url(@assets/cursor_bubble.gif) 30 25, auto; */
+    cursor: url(https://cur.cursors-4u.net/nature/nat-4/nat340.png), auto;
+    /* cursor: url(@assets/cursor_shell.gif) 2 5, auto; */
+    /* cursor: url(https://cur.cursors-4u.net/toons/too-7/too635.cur), auto; */
+}
+
+body {
+    margin: 0;
+    background-image: url(@assets/Quiz/cenario1.webp);
+    background-repeat: repeat-y;
+    background-position: top;
+    background-size: cover;
+    overflow: hidden;
+    transition: background 1s ease-in-out;
+}
+
+.innerContent {
+    opacity: 0; /* Inicialmente invisível */
+    transform: scale(0.95); /* Um leve efeito de zoom-out */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Suaviza opacidade e transformação */
+}
+
+.innerContent.show {
+    opacity: 1; /* Visível */
+    transform: scale(1); /* Volta ao tamanho normal */
+}
+
+.innerContent.hide {
+    opacity: 0;
+    transform: scale(1.05); /* Leve zoom-out ao desaparecer */
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: static;
+    overflow: hidden;
+
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    padding: 10px;
+    
+}
+
+.content {
+    font-family: "Imprima", sans-serif;
+    font-size: 1.8em;
+    font-weight: 200;
+    color: #fff;
+    text-shadow: #0c5f7c 1px 1px;
+    width: 80%;
+    text-align: center;
+}
+
+.alternativas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    margin-top: 10vh;
+}
+
+.opcao {
+    margin: 2vh;
+    max-width: 30vw;
+    cursor: pointer;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.opcao:hover {
+transform: scale(1.1);
+text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+}
+
+
+@media (max-width:850px){
+    .content {
+        font-size: 1.5em;
+    }
+}

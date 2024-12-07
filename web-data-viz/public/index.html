@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
+    <title> ✦·┈๑⋅⋯ 𝐒𝐞𝐚𝐒𝐡𝐞𝐥𝐥 𝐇𝐞𝐚𝐫𝐭 ⋯⋅๑┈·✦</title>
+
+    <link href="css/seashell.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="iframeContent" src=""
+                style="width: 100%; height: 85vh; border: none;  border-radius: 10px;"></iframe>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="logo">
+            <a href="SeaShellHeart.html"><img src="@assets/Shell/LOGO.png"></a>
+        </div>
+
+        <div class="menu">
+            <a onclick="trocarTela('home')" id="btn1" class="btn1"><img src="@assets/Shell/PNGs/btn_home.png"></a>
+            <a onclick="trocarTela('login')" id="btn2" class="btn2"><img src="@assets/Shell/PNGs/btn_perfil.png"></a>
+            <a onclick="trocarTela('quizInicio')" class="btn3"><img src="@assets/Shell/PNGs/btn_quiz.png"></a>
+            <a onclick="trocarTela('sobre')" class="btn4"><img src="@assets/Shell/PNGs/btn_sobre.png"></a>
+        </div>
+        <div class="topo">
+            <!-- <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif" alt=""> -->
+            <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
+            <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
+        </div>
+        <div class="logout" alt="Clique aqui para sair" onclick="logout()">
+            <img src="@assets/linguadoTriste.gif">
+            <img src="@assets/sair.png" class="sair">
+        </div>
+
+        <div id="content" class="content">
+
+            <!-- HOME -->
+            <div style="transform: scaleX(-1);" class="" id="home">
+                <div class="faixaBubbles2">
+                    <h2>Seja bem-vindo(a) ao Fundo do Mar!</h2>
+                </div>
+                <!-- <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;"> -->
+
+                <div>
+                    <div><img src="@assets/the_little_mermaid__5th__by_lokmenghong560617_dg4wfo2.gif"
+                            style="max-width: 7vw; margin:5px; float: right;"></div>
+                    <p class="textoImg">
+                        Aqui, a magia do fundo do mar se encontra com a nostalgia de uma história que marcou gerações.
+                        Para mim,
+                        <i>A Pequena Sereia</i> não é apenas uma animação: é um lembrete para nunca deixar de lado a
+                        minha criança interior — aquela que acredita em aventuras, magia e finais felizes.
+                        Mergulhe comigo neste espaço onde compartilho como essa história me inspirou a manter a
+                        curiosidade, o
+                        coração aberto e a coragem para enfrentar as marés da vida adulta.
+                        Prepare-se para navegar por memórias, explorar curiosidades e, claro, viver sua própria aventura
+                        no nosso quiz interativo.
+                        <br><br>
+                        O oceano está chamando... você vai atender?
+                    </p>
+                </div>
+            </div>
+
+            <!-- CADASTRO -->
+            <div style="transform: scaleX(-1); margin-top: 12px; margin-block: 10px;" class="esconder" id="cadastro">
+
+                <h2>Cadastro</h2>
+
+                <div class="input-container">
+                    <input type="text" id="inputNome" />
+                    <label>Nome</label>
+                </div>
+                <div class="input-container">
+                    <input type="mail" id="inputEmail">
+                    <label>Email</label>
+                </div>
+                <div class="input-container">
+                    <input type="text" id="inputUsuario">
+                    <label>Usuário</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="inputSenhaCadastro" style="width: 90% !important;"
+                        onkeyup="verificarSenha()">
+                    <label>Senha</label>
+                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
+                        onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
+                </div>
+                <div class="input-container">
+                    <input type="password" id="inputSenhaVerificar" style="width: 90% !important;"
+                        onkeyup="verificarSenha()">
+                    <label id="labelVerificar">Confirme a senha</label>
+                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
+                        id="idVisualizarVerificar" onclick="verSenhaVerificar()"
+                        style="cursor: pointer; width:20px; filter: invert();">
+                </div>
+
+                <button class="glossy-button btn" onclick="cadastrar()">Cadastrar</button>
+            </div>
+
+            <!-- LOGIN -->
+            <div style="transform: scaleX(-1); margin-top: 12px; margin-block: 10px;" class="esconder" id="login">
+
+                <h2>Acesse o seu perfil</h2>
+
+                <div class="input-container">
+                    <input type="text" required="">
+                    <label>Usuário</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;" required=""
+                        onkeyup="verificarSenha()">
+                    <label>Senha</label>
+                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
+                        onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
+                </div>
+
+                <button class="glossy-button btn">Entrar</button>
+                <a onclick="trocarTela('cadastro')">Cadastre-se</a>
+            </div>
+
+            <!-- QUIZ INICIO -->
+            <div style="transform: scaleX(-1); margin-bottom: 5vh;" class="esconder" id="quizInicio">
+                <div class="faixaBubbles">
+                    <h2>O oceano está chamando... você vai atender?</h2>
+                </div>
+                Você é um jovem residente do mar cheio de curiosidade e desejo de explorar o vasto oceano para além dos
+                corais
+                onde cresceu. Seu coração vibra com a promessa de mistérios escondidos, aventuras emocionantes e
+                segredos
+                antigos guardados pelas profundezas.
+                <br><br>
+                Hoje, algo diferente chama sua atenção — o som suave de correntes mágicas e o brilho das águas que
+                parecem
+                te convidar a partir em uma jornada. Mas o oceano é tão belo quanto perigoso, e suas escolhas
+                determinarão o
+                que encontrará ao longo do caminho. Como você vai se sair nessa aventura?
+                <br>
+                <span id="openModalBtn" class="linkQuiz">
+                    <img src="@assets/Clique-aqui-e-comece-a-sua-jornada.png">
+                    <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif"
+                        style="max-height: 10vh;">
+                </span>
+            </div>
+
+            <!-- PERFIL -->
+            <div style="transform: scaleX(-1);" class="esconder" id="perfil">
+                <div class="faixaBubbles">
+                    <h2>
+                        <center>SEUS RESULTADOS</center>
+                    </h2>
+                </div>
+
+                <div class="conteudoPerfil" id="perfilA">
+                    <div style="width: 60%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <img src="@assets/plakinhaA.gif" style="max-width: 10vw;">
+                    <p>
+                    <div class="faixaBubbles">
+                        <h3>DESCOBRIDOR DOS 7 MARES</h3>
+                    </div>
+                    Você é destemido como as ondas do mar, sempre disposto a mergulhar de cabeça no desconhecido. O
+                    perigo e a
+                    incerteza não te intimidam, eles são o combustível para sua curiosidade e coragem. Cada
+                    escolha é uma nova oportunidade para descobrir segredos e desafiar limites. Como um verdadeiro
+                    explorador dos
+                    mares, você sabe que as maiores recompensas vêm dos maiores riscos.
+                    </p>
+                </div>
+
+
+                <div class="conteudoPerfil" id="perfilB">
+                    <div style="width: 60%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <img src="@assets/plakinhaB.gif" style="max-width: 10vw;">
+                    <p>
+                    <div class="faixaBubbles">
+                        <h3>A CONCHA GUARDIÃ</h3>
+                    </div>
+                    Você valoriza a segurança e a sabedoria, protegendo-se como uma concha guarda sua pérola. Cada passo
+                    é
+                    cuidadosamente considerado, e você sabe que a paciência e a observação são virtudes poderosas.
+                    Prefere preservar
+                    o que é precioso e evitar perigos desnecessários, confiando em sua intuição e respeito pelos
+                    mistérios do
+                    oceano.
+                    </p>
+                </div>
+
+
+                <div class="conteudoPerfil" id="perfilC">
+                    <div style="width: 60%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <img src="@assets/plakinhaC.gif" style="max-width: 10vw;">
+                    <p>
+                    <div class="faixaBubbles">
+                        <h3>SONHADOR DAS MARÉS</h3>
+                    </div>
+                    Você navega com equilíbrio entre coragem e cautela, como alguém que compreende os ciclos das marés.
+                    Sabe quando
+                    arriscar para avançar e quando recuar para proteger o que importa. Esse equilíbrio faz de você uma
+                    pessoa
+                    estrategista, capaz de encontrar soluções criativas e alcançar seus objetivos, respeitando o ritmo
+                    do oceano e
+                    da
+                    vida.
+                    </p>
+                </div>
+
+
+            </div>
+
+            <!-- SOBRE -->
+            <div style="transform: scaleX(-1);" class="esconder" id="sobre">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis unde
+                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo
+                inventore veritatis et quasi architecto beatae vitae dicta.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis unde
+                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo
+                inventore veritatis et quasi architecto beatae vitae dicta sunt voluptatem sequi nesciunt.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis
+                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis unde
+                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo
+                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<!-- LINK CHARTJS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Inicializa o Chart.js depois de carregar o HTML
+    const ctx = document.getElementById('myChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Descobridor dos 7 Mares',
+                    'Concha Guardiã',
+                    'Sonhador das Marés'
+                ],
+                datasets: [{
+                    // label: ['Pontuação'],
+                    data: [50, 50, 30],
+                    backgroundColor: [
+                        'rgb(36, 200, 220, 0.6)', //AZUL
+                        'rgb(179,139,221, 0.6)', //ROXO
+                        'rgb(19,163,164, 0.6)' //VERDE
+                    ],
+                    borderWidth: 0.5, // Define a largura da borda
+                    // borderDash: [2, 2], // Define o padrão da linha pontilhada
+                }]
+            },
+
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: 'white', // Define a cor da fonte
+                            font: {
+                                size: 12, // Define o tamanho da fonte (opcional)
+                                family: 'Imprima', // Define a família da fonte (opcional)
+                                // style: 'italic' // Define o estilo (normal, italic, bold)
+                            },
+                            boxWidth: 10, // Largura do ícone da legenda
+                            boxHeight: 10, // Altura do ícone da legenda
+                            // useBorderRadius: true, // Torna o ícone com bordas arredondadas
+                            borderWidth: 0.5, // Define a largura da borda dos ícones
+                            usePointStyle: true, // Define ícones redondos
+                            pointStyle: 'circle', // Estilo dos ícones (default é círculo)
+                        }
+                    }
+                },
+            }
+
+        });
+    }
+</script>
+
+<script src="js/index.js"></script>
+<script src="js/popup.js"></script>
+<script src="js/senha.js"></script>
+
+<script>
+        function cadastrar() {
+            // aguardar();
+
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var nomeVar = inputNome.value;
+            var emailVar = inputEmail.value;
+            var userVar = inputUsuario.value;
+            var senhaVar = document.querySelector('#inputSenhaCadastro').value;
+            console.log(senhaVar)
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    userServer: userVar,
+                    senhaServer: senhaVar
+                }),
+            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+
+                        setTimeout(() => {
+                            trocarTela('login');
+                        }, "2000");
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+            return false;
+        }
+</script>

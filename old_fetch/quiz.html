@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
+    <title>𝐒𝐇 | Jogo das Escolhas</title>
+    <link href="quizEscolhas.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+
+            <!-- INICIO CENA A -->
+            <div class="innerContent show" id="cenaA" style="display: block;">
+                Logo ao deixar sua vila, você encontra uma caverna escondida entre os corais. Parece antiga e
+                repleta de histórias que as águas sussurram, mas o fundo do mar é vasto, e ainda há mais lugares para
+                explorar.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div1a" onclick="acoesA(this)">
+                        Entra na caverna submersa para ver o que tem lá dentro
+                    </div>
+                    <div class="opcao" id="div2a" onclick="acoesA(this)">
+                        Continua em frente e explora os arredores do reino
+                    </div>
+                </div>
+            </div>
+            <!-- FIM CENA A -->
+
+            <!-- INICIO CENA B1 -->
+            <div class="innerContent" id="cenaB1" style="display: none;">
+                Ao entrar, você se vê em uma caverna brilhante, iluminada por plantas bioluminescentes.
+                No fundo, olhos curiosos te observam.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div1b" onclick="acoesB1(this)">
+                        Se aproxima e tenta uma interação com as criaturas
+                    </div>
+                    <div class="opcao" id="div1c" onclick="acoesB1(this)">
+                        Ignora as criaturas e continua explorando a caverna
+                    </div>
+                </div>
+            </div>
+            <!-- FIM CENA B1 -->
+
+            <!-- INICIO CENA B2 -->
+            <div class="innerContent" id="cenaB2" style="display: none;">
+                Conforme se afasta do reino, você encontra um arco natural de pedras coberto por musgos brilhantes. Algo
+                na
+                estrutura parece mágico, e você percebe que pequenos peixes estão atravessando o arco e desaparecendo.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div2b" onclick="acoesB2(this)">
+                        Atravessa o arco sem hesitar, movido(a) pela curiosidade
+                    </div>
+                    <div class="opcao" id="div2c" onclick="acoesB2(this)">
+                        Decide voltar para o reino e conversar com os anciãos sobre o que viu
+                    </div>
+                </div>
+            </div>
+            <!-- FIM CENA B2 -->
+
+            <!-- INICIO CENA C1 -->
+            <div class="innerContent" id="cenaC1" style="display: none;">
+                Ao conversar com as criaturas, estas se revelam serem guardiãs de um antigo tesouro dos mares, mas para
+                ganhá-lo, você primeiro deve derrotar o predador da caverna.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div1d" onclick="acoesC1(this)">
+                        Sai calmamente e continua sua jornada. Às vezes é melhor não interferir no que não
+                        entende completamente
+                    </div>
+                    <div class="opcao" id="div1e" onclick="acoesC1(this)">
+                        Decide ir atrás do predador, iniciando uma nova jornada de perigos e surpresas
+                    </div>
+                </div>
+            </div>
+            <!-- FIM CENA C1 -->
+
+            <!-- INICIO CENA C2 -->
+            <div class="innerContent" id="cenaC2" style="display: none;">
+                Lá, você encontra baús fechados, mas também sinais de que um predador pode estar próximo.
+                <br><br>
+                E agora?
+                <div class="alternativas">
+                    <div class="opcao" id="div1f" onclick="acoesC2(this)">
+                        Você sai rapidamente antes que algo ruim aconteça
+                    </div>
+                    <div class="opcao" id="div1g" onclick="acoesC2(this)">
+                        Decide continuar mesmo assim e abre um dos baús para ver o que tem dentro
+                    </div>
+                </div>
+            </div>
+            <!--FIM CENA C2 -->
+
+            <!-- INICIO CENA C3 -->
+            <div class="innerContent" id="cenaC3" style="display: none;">
+                Os anciãos, sem dar explicações, apenas dizem para você ficar longe do arco.
+                <br>
+                Um senhor maltrapilho que
+                ali passava diz já ter entrado pelo portal há muito tempo atrás, e perguntou como estavam as criaturas.
+                Antes de responder, um barulho te distrai, e você o perde de vista.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div2d" onclick="acoesC3(this)">
+                        Decide voltar e descobrir o que há através do arco
+                    </div>
+                    <div class="opcao" id="div2e" onclick="acoesC3(this)">
+                        Prefere ouvir os conselhos dos anciãos e volta para os corais
+                    </div>
+                </div>
+            </div>
+            <!--FIM CENA C3 -->
+
+            <!-- INICIO CENA D -->
+            <div class="innerContent" id="cenaD" style="display: none;">
+                Ao abrir, o baú faz barulho e atrai o predador, obrigando você a fugir rapidamente, perdendo um artefato
+                importante no processo.
+                <br><br>
+                O que você faz?
+                <div class="alternativas">
+                    <div class="opcao" id="div1h" onclick="acoesD(this)">
+                        Continua fugindo até achar a saída da caverna
+                    </div>
+                    <div class="opcao" id="div1i" onclick="acoesD(this)">
+                        Volta para tentar recuperar o objeto
+                    </div>
+                </div>
+            </div>
+            <!--FIM CENA D -->
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const cenaA = document.getElementById('cenaA')
+    const cenaB1 = document.getElementById('cenaB1')
+    const cenaB2 = document.getElementById('cenaB2')
+    const cenaC1 = document.getElementById('cenaC1')
+    const cenaC2 = document.getElementById('cenaC2')
+    const cenaC3 = document.getElementById('cenaC3')
+    const cenaD = document.getElementById('cenaD')
+
+    var perfilA = 0
+    var perfilB = 0
+
+    function acoesA(opcao) {
+        cenaA.classList.add('hide')
+        setTimeout(() => {
+            cenaA.style.display = 'none' // Esconde completamente após a animação
+            cenaA.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaA.style.display = 'none'
+        if (opcao.id === 'div1a') {
+            cenaB1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenaB1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilA++
+        }
+        else if (opcao.id === 'div2a') {
+            cenaB2.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB2.webp')"
+
+            setTimeout(() => {
+                cenaB2.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilB++
+        }
+    }
+
+    function acoesB1(opcao) {
+        cenaB1.classList.add('hide')
+        setTimeout(() => {
+            cenaB1.style.display = 'none' // Esconde completamente após a animação
+            cenaB1.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaB1.style.display = 'none'
+        if (opcao.id === 'div1b') {
+            cenaC1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC1.webp')"
+
+            setTimeout(() => {
+                cenaC1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilA++
+        }
+        else if (opcao.id === 'div1c') {
+            cenaC2.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC2.webp')"
+
+            setTimeout(() => {
+                cenaC2.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilB++
+        }
+    }
+
+    function acoesB2(opcao) {
+        cenaB2.classList.add('hide')
+        setTimeout(() => {
+            cenaB2.style.display = 'none' // Esconde completamente após a animação
+            cenaB2.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaB2.style.display = 'none'
+        if (opcao.id === 'div2b') {
+            cenaB1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenaB1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilA++
+        }
+        else if (opcao.id === 'div2c') {
+            cenaC3.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaC3.webp')"
+
+            setTimeout(() => {
+                cenaC3.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+
+            perfilB++
+        }
+    }
+
+    //FINAL
+    function acoesC1(opcao) {
+        cenaC1.classList.add('hide')
+        setTimeout(() => {
+            cenaC1.style.display = 'none' // Esconde completamente após a animação
+            cenaC1.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaC1.style.display = 'none'
+        if (opcao.id === 'div1d') {
+            perfilA++
+            fecharModal()
+
+        }
+        else if (opcao.id === 'div1e') {
+            perfilB++
+            fecharModal()
+
+        }
+        return resultado()
+    }
+
+    //FINAL
+    function acoesC2(opcao) {
+        cenaC2.classList.add('hide')
+        setTimeout(() => {
+            cenaC2.style.display = 'none' // Esconde completamente após a animação
+            cenaC2.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaC2.style.display = 'none'
+        if (opcao.id === 'div1f') {
+            /*cenaB1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenaB1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)*/
+            perfilA++
+            resultado()
+            return fecharModal()
+
+        }
+        else if (opcao.id === 'div1g') {
+            cenaD.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaD.webp')"
+
+            setTimeout(() => {
+                cenaD.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+            perfilB++
+        }
+    }
+    //FINAL
+    function acoesC3(opcao) {
+        cenaC3.classList.add('hide')
+        setTimeout(() => {
+            cenaC3.style.display = 'none' // Esconde completamente após a animação
+            cenaC3.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaC3.style.display = 'none'
+        if (opcao.id === 'div2d') {
+            cenaB1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenaB1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+            perfilA++
+        }
+        else if (opcao.id === 'div2e') {
+            perfilB++
+
+            resultado()
+            fecharModal()
+
+        }
+    }
+    //FINAL
+    function acoesD(opcao) {
+        cenaD.classList.add('hide')
+        setTimeout(() => {
+            cenaD.style.display = 'none' // Esconde completamente após a animação
+            cenaD.classList.remove('hide') // Remove a classe de animação
+        }, 800) // Tempo igual ao da transição no CSS
+
+
+        cenaD.style.display = 'none'
+        if (opcao.id === 'div1h') {
+            /*cenaB1.style.display = 'block'
+            document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenaB1.classList.add('show') // Adiciona a animação de entrada
+            }, 50)*/
+            perfilA++
+            fecharModal()
+        }
+        else if (opcao.id === 'div1i') {
+            perfilB++
+            fecharModal()
+        }
+
+        return resultado()
+    }
+
+
+    function resultado() {
+
+        if (perfilA > perfilB) {
+            return exibirResultado('A');
+        }
+        else if (perfilB > perfilA) {
+            return exibirResultado('B');
+        } else {
+            return exibirResultado('C');
+        }
+    }
+
+</script>

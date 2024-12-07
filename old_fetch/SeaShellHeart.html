@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon"
+        href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
+    <title> ✦·┈๑⋅⋯ 𝐒𝐞𝐚𝐒𝐡𝐞𝐥𝐥 𝐇𝐞𝐚𝐫𝐭 ⋯⋅๑┈·✦</title>
+
+    <link href="seashell.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe id="iframeContent" src=""
+                style="width: 100%; height: 85vh; border: none;  border-radius: 10px;"></iframe>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="logo">
+            <a href="SeaShellHeart.html"><img src="Prototipo/Shell/LOGO.png"></a>
+        </div>
+
+        <div class="menu">
+            <a onclick="pagInicial()" id="btn1" class="btn1"><img src="Prototipo/Shell/PNGs/btn_home.png"></a>
+            <a onclick="perfil()" id="btn2" class="btn2"><img src="Prototipo/Shell/PNGs/btn_perfil.png"></a>
+            <a onclick="quizInicio()" class="btn3"><img src="Prototipo/Shell/PNGs/btn_quiz.png"></a>
+            <a onclick="sobreMim()" class="btn4"><img src="Prototipo/Shell/PNGs/btn_sobre.png"></a>
+        </div>
+        <div class="topo">
+            <!-- <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif" alt=""> -->
+            <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
+            <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
+        </div>
+        <div class="logout" alt="Clique aqui para sair" onclick="logout()">
+            <img src="@assets/linguadoTriste.gif">
+            <img src="@assets/sair.png" class="sair">
+        </div>
+
+        <div id="content" class="content"></div>
+
+    </div>
+</body>
+
+</html>
+
+<!-- Carregar a div da Home ao carregar a página -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>$(document).ready(function () { $('#content').load('home.html'); })</script>
+
+<!-- Demais scripts -->
+<script>
+    const contentDiv = document.getElementById('content');
+
+    function carregarPagina(nomeArquivo, paginaNome) {
+        fetch(nomeArquivo)
+            .then(response => {
+                if (!response.ok) throw new Error(`Erro ao carregar ${paginaNome}`);
+                return response.text();
+            })
+            .then(data => contentDiv.innerHTML = data)
+            .catch(() => handleFetchError(paginaNome));
+    }
+
+    function pagInicial() { carregarPagina('home.html', 'HOME'); }
+    function sobreMim() { carregarPagina('sobre.html', 'SOBRE'); }
+    function quizInicio() { carregarPagina('quizInicio.html', 'QUIZ'); }
+    function perfil() { carregarPagina('login.html', 'PERFIL'); }
+    function perfilLogado() {
+        fetch('perfil.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar o arquivo: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(data => {
+                contentDiv.innerHTML = data; // Insere o conteúdo carregado na div
+
+                // Inicializa o Chart.js depois de carregar o HTML
+                const ctx = document.getElementById('myChart');
+                if (ctx) {
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: [
+                                'Descobridor dos 7 Mares',
+                                'Concha Guardiã',
+                                'Sonhador das Marés'
+                            ],
+                            datasets: [{
+                                // label: ['Pontuação'],
+                                data: [50, 50, 30],
+                                backgroundColor: [
+                                    'rgb(36, 200, 220, 0.6)', //AZUL
+                                    'rgb(179,139,221, 0.6)', //ROXO
+                                    'rgb(19,163,164, 0.6)' //VERDE
+                                ],
+                                borderWidth: 0.5, // Define a largura da borda
+                                // borderDash: [2, 2], // Define o padrão da linha pontilhada
+                            }]
+                        },
+
+                        options: {
+                            plugins: {
+                                legend: {
+                                    position: 'top',
+                                    labels: {
+                                        color: 'white', // Define a cor da fonte
+                                        font: {
+                                            size: 12, // Define o tamanho da fonte (opcional)
+                                            family: 'Imprima', // Define a família da fonte (opcional)
+                                            // style: 'italic' // Define o estilo (normal, italic, bold)
+                                        },
+                                        boxWidth: 10, // Largura do ícone da legenda
+                                        boxHeight: 10, // Altura do ícone da legenda
+                                        // useBorderRadius: true, // Torna o ícone com bordas arredondadas
+                                        borderWidth: 0.5, // Define a largura da borda dos ícones
+                                        usePointStyle: true, // Define ícones redondos
+                                        pointStyle: 'circle', // Estilo dos ícones (default é círculo)
+                                    }
+                                }
+                            },
+                        }
+
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error); // Exibe o erro no console
+                contentDiv.innerHTML = '<p style="transform: scaleX(-1);">Erro ao carregar PERFIL. Tente novamente mais tarde.</p>';
+            });
+    }
+
+
+</script>
+
+
+
+<!-- SCRIPTS SENHA -->
+<script>
+    function verSenha() {
+        var senhaInput = document.getElementById('inputSenha')
+        var visualizarIcone = document.getElementById('idVisualizar')
+
+        if (senhaInput.type == "password") {
+            senhaInput.type = "text"
+            visualizarIcone.src = 'https://icons.veryicon.com/png/o/internet--web/property-2/closed-eyes.png'
+        } else {
+            senhaInput.type = "password"
+            visualizarIcone.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
+        }
+    }
+
+    function verSenhaVerificar() {
+        var senhaInputVerify = document.getElementById('inputSenhaVerificar')
+        var visualizarIconeVerify = document.getElementById('idVisualizarVerificar')
+
+        if (senhaInputVerify.type == "password") {
+            senhaInputVerify.type = "text"
+            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/internet--web/property-2/closed-eyes.png'
+        } else {
+            senhaInputVerify.type = "password"
+            visualizarIconeVerify.src = 'https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png'
+        }
+    }
+
+    function verificarSenha() {
+        var senhaInput = document.getElementById('inputSenha')
+        var senhaInputVerify = document.getElementById('inputSenhaVerificar')
+        var label = document.getElementById('labelVerificar')
+
+        if (senhaInputVerify.value != senhaInput.value) {
+            // label.innerHTML='Confirme a senha <img src="https://64.media.tumblr.com/195aa4df5fec4cea6f5d597c695ef756/7cf915f60095705b-31/s75x75_c1/99901ca014db2811e368d6c30932ce8da362984b.gif" style="height:2vh; vertical-align: middle;">'
+            label.innerHTML = 'Confirme a senha <img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;">'
+            // label.innerHTML='Confirme a senha <img src="http://i11.photobucket.com/albums/a168/evelynregly/minigifs/xiss.gif" style="max-height:2vh; vertical-align: middle;">'
+        } else {
+            // senhaInputVerify.style='initial-value'
+            label.innerHTML = 'Confirme a senha'
+        }
+
+    }
+</script>
+
+<!-- SCRIPT POP-UP -->
+<script>
+    const modal = document.getElementById('myModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.querySelector('.close-btn');
+    const iframeContent = document.getElementById('iframeContent');
+
+    // Usa o event delegation para capturar cliques no botão "openModalBtn"
+    contentDiv.addEventListener('click', (event) => {
+        // Verifica se o elemento clicado ou algum ancestral tem o ID "openModalBtn"
+        const target = event.target.closest('#openModalBtn');
+        if (target) {
+            // Configura o modal e exibe
+            iframeContent.src = "quiz.html"; // Página que será exibida no iframe
+            modal.style.display = "block";
+        }
+    });
+
+    // Fecha o modal ao clicar no botão de fechar
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        iframeContent.src = ""; // Limpa o iframe
+    });
+
+    // Fecha o modal ao clicar fora dele
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+            iframeContent.src = "";
+        }
+    });
+
+</script>
+
+
+<!-- LINK CHARTJS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
