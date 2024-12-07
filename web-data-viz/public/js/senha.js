@@ -1,5 +1,5 @@
     function verSenha() {
-        var senhaInput = document.getElementById('inputSenha')
+        var senhaInput = document.getElementById('inputSenhaCadastro')
         var visualizarIcone = document.getElementById('idVisualizar')
 
         if (senhaInput.type == "password") {
@@ -25,7 +25,7 @@
     }
 
     function verificarSenha() {
-        var senhaInput = document.getElementById('inputSenha')
+        var senhaInput = document.getElementById('inputSenhaCadastro')
         var senhaInputVerify = document.getElementById('inputSenhaVerificar')
         var label = document.getElementById('labelVerificar')
 

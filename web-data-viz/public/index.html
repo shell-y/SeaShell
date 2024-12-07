@@ -85,19 +85,19 @@
                     <label>Email</label>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="inputUsuario">
+                    <input type="text" id="inputUsuario" maxlength="8">
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
                     <input type="password" id="inputSenhaCadastro" style="width: 90% !important;"
-                        onkeyup="verificarSenha()">
+                        onkeyup="verificarSenha()" maxlength="8">
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
                         onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
                 </div>
                 <div class="input-container">
                     <input type="password" id="inputSenhaVerificar" style="width: 90% !important;"
-                        onkeyup="verificarSenha()">
+                        onkeyup="verificarSenha()" maxlength="8">
                     <label id="labelVerificar">Confirme a senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
                         id="idVisualizarVerificar" onclick="verSenhaVerificar()"
@@ -112,19 +112,19 @@
 
                 <h2>Acesse o seu perfil</h2>
 
-                <div class="input-container">
-                    <input type="text" required="">
+                <div class="input-container" id="inputUsuarioLogin">
+                    <input type="text" maxlength="9">
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;" required=""
+                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;"  maxlength="8"
                         onkeyup="verificarSenha()">
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
                         onclick="verSenha()" style="cursor: pointer; width:20px; filter: invert();">
                 </div>
 
-                <button class="glossy-button btn">Entrar</button>
+                <button class="glossy-button btn" onclick="autenticar()">Entrar</button>
                 <a onclick="trocarTela('cadastro')">Cadastre-se</a>
             </div>
 
@@ -356,10 +356,57 @@
 
                         setTimeout(() => {
                             trocarTela('login');
-                        }, "2000");
+                        }, "1000");
 
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+            return false;
+        }
+
+        function autenticar() {
+            // aguardar();
+
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var userVar = inputUsuarioLogin.value;
+            var senhaVar = document.querySelector('#inputSenhaLogin').value;
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
+                body: JSON.stringify({
+                    userServer: userVar,
+                    senhaServer: senhaVar
+                }),
+            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        resposta.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            sessionStorage.ID_USUARIO = json.id;
+                            sessionStorage.NOME_USUARIO = json.nome;
+                            sessionStorage.EMAIL_USUARIO = json.email;
+                            sessionStorage.USUARIO_USUARIO = json.usuario;
+                        })
+                        setTimeout(() => {
+                            trocarTela('perfil');
+                        }, "1000");
+
+                    } else {
+                        throw "Houve um erro ao tentar realizar o login!";
                     }
                 })
                 .catch(function (resposta) {

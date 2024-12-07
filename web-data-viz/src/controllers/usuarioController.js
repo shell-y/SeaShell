@@ -20,25 +20,15 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        id: resultadoAutenticar[0].id,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        aquarios: resultadoAquarios
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                        res.json({
+                            id: resultadoAutenticar[0].idusuario,
+                            nome: resultadoAutenticar[0].nome,
+                            email: resultadoAutenticar[0].email,
+                            usuario: resultadoAutenticar[0].usuario,
+                            senha: resultadoAutenticar[0].senha,
+                        });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
                 }
             ).catch(
@@ -63,7 +53,7 @@ function cadastrar(req, res) {
     var usuario = req.body.userServer;
     var senha = req.body.senhaServer;
 
-console.log(nome,email,usuario,senha)
+    console.log(nome, email, usuario, senha)
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -77,7 +67,7 @@ console.log(nome,email,usuario,senha)
     } else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrarModel(nome, email, usuario, senha)
-        //Depois de inserir o cadastro no BD (BD > models > controllers)
+            //Depois de inserir o cadastro no BD (BD > models > controllers)
             .then(
                 function (resultado) {
                     res.json(resultado); //retorna o select como json
