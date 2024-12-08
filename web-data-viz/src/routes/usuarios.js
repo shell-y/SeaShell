@@ -22,4 +22,12 @@ router.post("/inseriropcao", function (req, res) {
     usuarioController.inseriropcao(req, res);
 });
 
+router.post("/updatetentativa", function (req, res) {
+    usuarioController.updatetentativa(req, res);
+});
+
+router.get("/selectperfil/:idusuario", function (req, res) {
+    usuarioController.selectperfil(req, res);
+});
+
 module.exports = router;

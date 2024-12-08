@@ -8,6 +8,7 @@
         href="https://64.media.tumblr.com/bbc95969c5564339431fc540177a39b6/tumblr_inline_n0rutjVcpP1qid2nw.gif">
     <title>𝐒𝐇 | Jogo das Escolhas</title>
     <link href="css/quizEscolhas.css" rel="stylesheet">
+    <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -128,6 +129,13 @@ Volta para tentar recuperar o objeto
             </div>
             <!--FIM CENA D -->
 
+            <!-- INICIO FINAL -->
+            <div class="innerContent" id="cenafinal" style="display: none;">
+<h2>Jornada concluída!</h2>
+Vá até o seu perfil para saber o resultado
+                            </div>
+                            <!--FIM FINAL -->
+
         </div>
     </div>
 </body>
@@ -142,6 +150,7 @@ Volta para tentar recuperar o objeto
     const cenaC2 = document.getElementById('cenaC2')
     const cenaC3 = document.getElementById('cenaC3')
     const cenaD = document.getElementById('cenaD')
+    const cenafinal = document.getElementById('cenafinal')
 
     var perfilA = 0
     var perfilB = 0
@@ -262,7 +271,7 @@ Volta para tentar recuperar o objeto
 
         }
         inseriropcao(4,opcao.textContent)
-        return inserirNoBanco()
+        updateTentativas()
     }
 
     //FINAL
@@ -283,7 +292,7 @@ Volta para tentar recuperar o objeto
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)*/
             perfilA++
-            inserirNoBanco()
+            updateTentativas()
 
         }
         else if (opcao.id === 'div1g') {
@@ -323,7 +332,7 @@ Volta para tentar recuperar o objeto
         }
 
         inseriropcao(6,opcao.textContent)
-        inserirNoBanco()
+        updateTentativas()
     }
     //FINAL
     function acoesD(opcao) {
@@ -344,17 +353,59 @@ Volta para tentar recuperar o objeto
 
         inseriropcao(7,opcao.textContent)
 
-        return inserirNoBanco()
+        updateTentativas()
     }
 
 
-    function inserirNoBanco() {
+    function updateTentativas() {
+
+            //CENA FINAL INICIO
+            cenafinal.style.display = 'block'
+            // document.body.style.backgroundImage = "url('@assets/Quiz/cenaB1.webp')"
+
+            setTimeout(() => {
+                cenafinal.classList.add('show') // Adiciona a animação de entrada
+            }, 50)
+            //CENA FINAL FIM
+
+
+        var perfilC = 0
+
+        if(perfilA == perfilB){
+            perfilC=1
+        }
+
+        fetch("/usuarios/updatetentativa", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
+                body: JSON.stringify({
+                    perfilaServer: perfilA, //perfilaServer lá do controller e perfilA como a variável global daqui
+                    perfilbServer: perfilB,
+                    perfilcServer: perfilC,
+                    fkusuarioServer: sessionStorage.ID_USUARIO,
+                    tentativaServer: sessionStorage.ID_TENTATIVA
+
+                }),
+            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        console.log('update com sucesso')
+                    } else {
+                        throw "Houve um erro ao dar update na tentativa!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
 
     }
 
-</script>
 
-<script>
     function inseriropcao(pergunta,opcao) {
             
     var fkperguntas = pergunta;
@@ -388,8 +439,6 @@ Volta para tentar recuperar o objeto
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
                 });
-
-            return false;
         }
 </script>
 

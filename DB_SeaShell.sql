@@ -1,3 +1,4 @@
+drop database seashell;
 create database seashell;
 use seashell;
 
@@ -57,4 +58,7 @@ constraint pkPQTU primary key(fkperguntas,fkquiz,fktentativa,fkusuario)
 );
 
 select * from opcoes order by fktentativa;
+select * from tentativas;
+
+select * from opcoes;
 

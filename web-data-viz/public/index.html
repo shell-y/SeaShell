@@ -94,7 +94,8 @@
                         onkeyup="verificarSenha()" maxlength="8">
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
-                        onclick="verSenha('inputSenhaCadastro','idVisualizar')" style="cursor: pointer; width:20px; filter: invert();">
+                        onclick="verSenha('inputSenhaCadastro','idVisualizar')"
+                        style="cursor: pointer; width:20px; filter: invert();">
                 </div>
                 <div class="input-container">
                     <input type="password" id="inputSenhaVerificar" style="width: 90% !important;"
@@ -118,11 +119,12 @@
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;"  maxlength="8"
+                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;" maxlength="8"
                         onkeyup="verificarSenha()">
                     <label>Senha</label>
-                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizarLogin"
-                        onclick="verSenha('inputSenhaLogin','idVisualizarLogin')" style="cursor: pointer; width:20px; filter: invert();">
+                    <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
+                        id="idVisualizarLogin" onclick="verSenha('inputSenhaLogin','idVisualizarLogin')"
+                        style="cursor: pointer; width:20px; filter: invert();">
                 </div>
 
                 <button class="glossy-button btn" onclick="autenticar()">Entrar</button>
@@ -131,6 +133,7 @@
 
             <!-- QUIZ INICIO -->
             <div style="transform: scaleX(-1); margin-bottom: 5vh;" class="esconder" id="quizInicio">
+
                 <div class="faixaBubbles">
                     <h2>O oceano está chamando... você vai atender?</h2>
                 </div>
@@ -148,76 +151,27 @@
                 <br>
                 <span id="openModalBtn" onclick="inserirtentativa()" class="linkQuiz">
                     <img src="@assets/Clique-aqui-e-comece-a-sua-jornada.png">
-                    <img src="@assets/kisses.gif"
-                        style="max-height: 10vh;">
+                    <img src="@assets/kisses.gif" style="max-height: 10vh;">
                 </span>
             </div>
 
             <!-- PERFIL -->
-            <div style="transform: scaleX(-1);" class="esconder" id="perfil">
+            <div style="transform: scaleX(-1);" class="esconder" id="perfil" onload="selectperfil()">
                 <div class="faixaBubbles">
                     <h2>
-                        <center>SEUS RESULTADOS</center>
+                        <center>SEU ÚLTIMO RESULTADO FOI:</center>
                     </h2>
                 </div>
 
-                <div class="conteudoPerfil" id="perfilA">
+                <div class="conteudoPerfil">
                     <div style="width: 60%;">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <img src="@assets/plakinhaA.gif" style="max-width: 10vw;">
-                    <p>
-                    <div class="faixaBubbles">
-                        <h3>DESCOBRIDOR DOS 7 MARES</h3>
-                    </div>
-                    Você é destemido como as ondas do mar, sempre disposto a mergulhar de cabeça no desconhecido. O
-                    perigo e a
-                    incerteza não te intimidam, eles são o combustível para sua curiosidade e coragem. Cada
-                    escolha é uma nova oportunidade para descobrir segredos e desafiar limites. Como um verdadeiro
-                    explorador dos
-                    mares, você sabe que as maiores recompensas vêm dos maiores riscos.
-                    </p>
-                </div>
 
+                    <img src="@assets/plakinhaA.gif" style="max-width: 10vw;" id="plakinha">
 
-                <div class="conteudoPerfil" id="perfilB">
-                    <div style="width: 60%;">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <img src="@assets/plakinhaB.gif" style="max-width: 10vw;">
-                    <p>
-                    <div class="faixaBubbles">
-                        <h3>A CONCHA GUARDIÃ</h3>
-                    </div>
-                    Você valoriza a segurança e a sabedoria, protegendo-se como uma concha guarda sua pérola. Cada passo
-                    é
-                    cuidadosamente considerado, e você sabe que a paciência e a observação são virtudes poderosas.
-                    Prefere preservar
-                    o que é precioso e evitar perigos desnecessários, confiando em sua intuição e respeito pelos
-                    mistérios do
-                    oceano.
-                    </p>
-                </div>
+                    <p id="resultadosPerfis"></p>
 
-
-                <div class="conteudoPerfil" id="perfilC">
-                    <div style="width: 60%;">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <img src="@assets/plakinhaC.gif" style="max-width: 10vw;">
-                    <p>
-                    <div class="faixaBubbles">
-                        <h3>SONHADOR DAS MARÉS</h3>
-                    </div>
-                    Você navega com equilíbrio entre coragem e cautela, como alguém que compreende os ciclos das marés.
-                    Sabe quando
-                    arriscar para avançar e quando recuar para proteger o que importa. Esse equilíbrio faz de você uma
-                    pessoa
-                    estrategista, capaz de encontrar soluções criativas e alcançar seus objetivos, respeitando o ritmo
-                    do oceano e
-                    da
-                    vida.
-                    </p>
                 </div>
 
 
@@ -269,187 +223,8 @@
 
 <!-- LINK CHARTJS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Inicializa o Chart.js depois de carregar o HTML
-    const ctx = document.getElementById('myChart');
-    if (ctx) {
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    'Descobridor dos 7 Mares',
-                    'Concha Guardiã',
-                    'Sonhador das Marés'
-                ],
-                datasets: [{
-                    // label: ['Pontuação'],
-                    data: [50, 50, 30],
-                    backgroundColor: [
-                        'rgb(36, 200, 220, 0.6)', //AZUL
-                        'rgb(179,139,221, 0.6)', //ROXO
-                        'rgb(19,163,164, 0.6)' //VERDE
-                    ],
-                    borderWidth: 0.5, // Define a largura da borda
-                    // borderDash: [2, 2], // Define o padrão da linha pontilhada
-                }]
-            },
 
-            options: {
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        labels: {
-                            color: 'white', // Define a cor da fonte
-                            font: {
-                                size: 12, // Define o tamanho da fonte (opcional)
-                                family: 'Imprima', // Define a família da fonte (opcional)
-                                // style: 'italic' // Define o estilo (normal, italic, bold)
-                            },
-                            boxWidth: 10, // Largura do ícone da legenda
-                            boxHeight: 10, // Altura do ícone da legenda
-                            // useBorderRadius: true, // Torna o ícone com bordas arredondadas
-                            borderWidth: 0.5, // Define a largura da borda dos ícones
-                            usePointStyle: true, // Define ícones redondos
-                            pointStyle: 'circle', // Estilo dos ícones (default é círculo)
-                        }
-                    }
-                },
-            }
-
-        });
-    }
-</script>
 
 <script src="js/index.js"></script>
 <script src="js/popup.js"></script>
 <script src="js/senha.js"></script>
-
-<script>
-        function cadastrar() {
-            // aguardar();
-
-            //Recupere o valor da nova input pelo nome do id
-            // Agora vá para o método fetch logo abaixo
-            var nomeVar = inputNome.value;
-            var emailVar = inputEmail.value;
-            var userVar = inputUsuario.value;
-            var senhaVar = document.querySelector('#inputSenhaCadastro').value;
-            console.log(senhaVar)
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
-                body: JSON.stringify({
-                    nomeServer: nomeVar,
-                    emailServer: emailVar,
-                    userServer: userVar,
-                    senhaServer: senhaVar
-                }),
-            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-
-                        setTimeout(() => {
-                            trocarTela('login');
-                        }, "1000");
-
-                    } else {
-                        throw "Houve um erro ao tentar realizar o cadastro!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-
-            return false;
-        }
-
-        function autenticar() {
-            // aguardar();
-
-            //Recupere o valor da nova input pelo nome do id
-            // Agora vá para o método fetch logo abaixo
-            var userVar = inputUsuarioLogin.value;
-            var senhaVar = document.querySelector('#inputSenhaLogin').value;
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
-                body: JSON.stringify({
-                    userServer: userVar,
-                    senhaServer: senhaVar
-                }),
-            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        resposta.json().then(json => {
-                            console.log(json);
-                            console.log(JSON.stringify(json));
-                            sessionStorage.ID_USUARIO = json.id;
-                            sessionStorage.NOME_USUARIO = json.nome;
-                            sessionStorage.EMAIL_USUARIO = json.email;
-                            sessionStorage.USUARIO_USUARIO = json.usuario;
-                        })
-                        setTimeout(() => {
-                            trocarTela('perfil');
-                        }, "1000");
-
-                    } else {
-                        throw "Houve um erro ao tentar realizar o login!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-
-            return false;
-        }
-
-    function inserirtentativa() {
-            // aguardar();
-
-            //Recupere o valor da nova input pelo nome do id
-            // Agora vá para o método fetch logo abaixo
-            var idusuarioVar = sessionStorage.ID_USUARIO;
-            var idquizVar = 1;
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/inserirtentativa", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
-                body: JSON.stringify({
-                    fkusuarioServer: idusuarioVar,
-                    idquizServer: idquizVar
-                }),
-            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-
-                    if (resposta.ok) {
-                        console.log('tentativa inserida')
-                    } else {
-                        throw "Houve um erro ao tentar inserir tentativa!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-
-            return false;
-        }
-</script>

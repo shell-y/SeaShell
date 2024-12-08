@@ -1,3 +1,5 @@
+//rota > controller > model > database
+
 var database = require("../database/config")
 
 function autenticar(usuario, senha) {
@@ -31,6 +33,7 @@ function inserirtentativaModel(fkusuario,idquiz) {
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
         INSERT INTO tentativas (fkusuario, fkquiz) VALUES ('${fkusuario}', '${idquiz}');
+        SELECT LAST_INSERT_ID() AS idtentativa;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -50,9 +53,31 @@ function inseriropcaoModel(fkperguntas,fkquiz,fkusuario,alternativa) {
     return database.executar(instrucaoSql);
 }
 
+function updatetentativaModel(fkusuario,idtentativa,perfila,perfilb,perfilc) {
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        UPDATE tentativas SET perfila='${perfila}', perfilb='${perfilb}', perfilc='${perfilc}' WHERE fkusuario=${fkusuario} AND idtentativa=${idtentativa};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function selectperfilModel(idusuario) {
+
+    var instrucaoSql = `
+    SELECT perfila,perfilb,perfilc from tentativas where fkusuario=${idusuario} order by datahora desc limit 1;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrarModel,
     inserirtentativaModel,
-    inseriropcaoModel
+    inseriropcaoModel,
+    updatetentativaModel,
+    selectperfilModel
 };

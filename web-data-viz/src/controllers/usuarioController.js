@@ -95,23 +95,24 @@ function inserirtentativa(req, res) {
     var fkusuario = req.body.fkusuarioServer;
     var idquiz = req.body.idquizServer;
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.inserirtentativaModel(fkusuario,idquiz)
-            //Depois de inserir o cadastro no BD (BD > models > controllers)
-            .then(
-                function (resultado) {
-                    res.json(resultado); //retorna o select como json
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o insert! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.json(erro.sqlMessage);
-                }
-            );
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.inserirtentativaModel(fkusuario, idquiz)
+        //Depois de inserir o cadastro no BD (BD > models > controllers)
+        .then(
+            function (resultado) {
+                const idtentativa = resultado[1][0].idtentativa; // Se múltiplas consultas estiverem habilitadas
+                res.json({ idtentativa });
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o insert! Erro: ",
+                    erro.sqlMessage
+                );
+                res.json(erro.sqlMessage);
+            }
+        );
 }
 
 function inseriropcao(req, res) {
@@ -125,29 +126,86 @@ function inseriropcao(req, res) {
     var fkusuario = req.body.fkusuarioServer;
     var alternativa = req.body.alternativaServer;
 
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.inseriropcaoModel(fkperguntas,fkquiz,fkusuario,alternativa)
-            //Depois de inserir o cadastro no BD (BD > models > controllers)
-            .then(
-                function (resultado) {
-                    res.json(resultado); //retorna o select como json
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o insert das alternativas! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.json(erro.sqlMessage);
-                }
-            );
-    }
-    
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.inseriropcaoModel(fkperguntas, fkquiz, fkusuario, alternativa)
+        //Depois de inserir o cadastro no BD (BD > models > controllers)
+        .then(
+            function (resultado) {
+                res.json(resultado); //retorna o select como json
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o insert das alternativas! Erro: ",
+                    erro.sqlMessage
+                );
+                res.json(erro.sqlMessage);
+            }
+        );
+}
+
+function updatetentativa(req, res) {
+
+    console.log(req.body);
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var fkusuario = req.body.fkusuarioServer;
+    var idtentativa = req.body.tentativaServer;
+    var perfila = req.body.perfilaServer; //req.body.NOME este nome precisa ser igual ao que está no html 
+    var perfilb = req.body.perfilbServer;
+    var perfilc = req.body.perfilcServer;
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.updatetentativaModel(fkusuario, idtentativa, perfila, perfilb, perfilc) //VAR declarada lá em cima é referenciada aqui nos parametros
+        //Depois de inserir o cadastro no BD (BD > models > controllers)
+        .then(
+            function (resultado) {
+                res.json(resultado); //retorna o select como json
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o update da tentativa! Erro: ",
+                    erro.sqlMessage
+                );
+                res.json(erro.sqlMessage);
+            }
+        );
+}
+
+function selectperfil(req, res) {
+    var idusuario = req.params.idusuario
+    console.log(req.body);
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.selectperfilModel(idusuario)
+        //Depois de inserir o cadastro no BD (BD > models > controllers)
+        .then(
+            function (resultado) {
+                console.log('retornei com o perfil')
+                res.json({resultado:resultado});
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao pegar o perfil! Erro: ",
+                    erro.sqlMessage
+                );
+                res.json(erro.sqlMessage);
+            }
+        );
+}
+
 
 module.exports = {
     autenticar,
     cadastrar,
     inserirtentativa,
-    inseriropcao
+    inseriropcao,
+    updatetentativa,
+    selectperfil
 }
