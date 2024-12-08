@@ -26,18 +26,23 @@ function selectperfil() {
             if (resposta.ok) {
                 resposta.json().then(json => {
                     console.log('perfil coletado', JSON.stringify(json));
-
+                    if (json.resultado.length == 0) {
+                        trocarTela('perfilVazio') //CASO NÃO TENHA QUIZ AINDA
+                        return
+                    }
                     var perfila = json.resultado[0].perfila
                     var perfilb = json.resultado[0].perfilb
                     var perfilc = json.resultado[0].perfilc
 
                     if (perfila == null || perfilb == null || perfilc == null) {
-                        trocarTela('quizInicio') //CASO NÃO TENHA QUIZ AINDA
+                        trocarTela('perfilVazio') //CASO NÃO TENHA QUIZ AINDA
+                        return
                     } else {
                         dadosencontrados = true
                         exibirResultado(perfila, perfilb, perfilc)
                         atualizarGrafico(perfila, perfilb)
                         trocarTela('perfil')
+                        return
                     }
                 })
             } else {
@@ -132,6 +137,8 @@ function autenticar() {
                 setTimeout(() => {
                     trocarTela('perfil');
                 }, "1000");
+
+                document.getElementById('logout').style.display = 'flex'
 
             } else {
                 throw "Houve um erro ao tentar realizar o login!";
@@ -233,6 +240,7 @@ function exibirResultado(a, b, c) {
                     do oceano e da vida.`
     }
 }
+
 
 function atualizarGrafico(perfila, perfilb) {
     grafico.data.datasets[0].data = [perfila, perfilb]

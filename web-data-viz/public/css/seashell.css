@@ -26,6 +26,7 @@ body {
     z-index: 1;
 }
 
+
 .logo a img {
     max-height: 20vh;
     position: absolute;
@@ -244,7 +245,7 @@ h2 {
 }
 
 .logout {
-    display: flex;
+    display: none;
     flex-direction: column;
     z-index: 3;
     flex-wrap: nowrap;
@@ -255,9 +256,6 @@ h2 {
     margin-left: 91vw;
     margin-top: 78vh;
 
-    /* max-width: 50vw; */
-
-    /* margin: 10px; */
 }
 .logout img{
     cursor: pointer;

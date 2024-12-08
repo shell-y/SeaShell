@@ -32,6 +32,7 @@
             <a onclick="trocarTela('perfil')" id="btn2" class="btn2"><img src="@assets/Shell/PNGs/btn_perfil.png"></a>
             <a onclick="trocarTela('quizInicio')" class="btn3"><img src="@assets/Shell/PNGs/btn_quiz.png"></a>
             <a onclick="trocarTela('sobre')" class="btn4"><img src="@assets/Shell/PNGs/btn_sobre.png"></a>
+            <!-- <button class="glossy-button btn" onclick="trocarTela('perfil')">Olá, sereia</button> -->
         </div>
         <div class="topo">
             <!-- <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif" alt=""> -->
@@ -39,7 +40,7 @@
             <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
         </div>
 
-        <div class="logout" alt="Clique aqui para sair" onclick="logout()">
+        <div class="logout" id="logout" onclick="logout()">
             <img src="@assets/linguadoTriste.gif">
             <img src="@assets/sair.png" class="sair">
         </div>
@@ -153,6 +154,15 @@
                     <img src="@assets/Clique-aqui-e-comece-a-sua-jornada.png">
                     <img src="@assets/kisses.gif" style="max-height: 10vh;">
                 </span>
+            </div>
+
+            <!-- PERFIL VAZIO -->
+            <div style="transform: scaleX(-1); margin-bottom: 5vh;" class="esconder" id="perfilVazio">
+
+                <div class="faixaBubbles">
+                    <h2>SEM QUIZ</h2>
+                </div>
+            Faça o quiz para visualizar os seus dados
             </div>
 
             <!-- PERFIL -->
