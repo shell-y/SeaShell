@@ -325,14 +325,14 @@ Vá até o seu perfil para saber o resultado
             setTimeout(() => {
                 cenaB1.classList.add('show') // Adiciona a animação de entrada
             }, 50)
+
             perfilA++
         }
         else if (opcao.id === 'div2e') {
             perfilB++            
+            inseriropcao(6,opcao.textContent)
+            updateTentativas()
         }
-
-        inseriropcao(6,opcao.textContent)
-        updateTentativas()
     }
     //FINAL
     function acoesD(opcao) {
@@ -441,4 +441,3 @@ Vá até o seu perfil para saber o resultado
                 });
         }
 </script>
-

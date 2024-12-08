@@ -6,8 +6,8 @@ create table usuario (
 idusuario int primary key auto_increment,
 nome varchar(45),
 email varchar(45),
-usuario char(8),
-senha char(8)
+usuario varchar(20),
+senha varchar(8)
 );
 
 create table quiz(
@@ -61,4 +61,4 @@ select * from opcoes order by fktentativa;
 select * from tentativas;
 
 select * from opcoes;
-
+select * from usuario;

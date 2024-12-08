@@ -73,11 +73,32 @@ function selectperfilModel(idusuario) {
     return database.executar(instrucaoSql);
 }
 
+
+function coletarperfisgeralModel() {
+
+    var instrucaoSql = `
+    SELECT Perfil, COUNT(*) AS qtd
+FROM (
+    SELECT CASE
+        WHEN perfila > perfilb THEN 'A'
+        WHEN perfilb > perfila THEN 'B'
+        ELSE 'C'
+    END AS Perfil
+    FROM tentativas
+) AS Perfis
+GROUP BY Perfil
+ORDER BY Perfil;
+`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrarModel,
     inserirtentativaModel,
     inseriropcaoModel,
     updatetentativaModel,
-    selectperfilModel
+    selectperfilModel,
+    coletarperfisgeralModel
 };

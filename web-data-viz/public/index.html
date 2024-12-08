@@ -32,6 +32,8 @@
             <a onclick="trocarTela('perfil')" id="btn2" class="btn2"><img src="@assets/Shell/PNGs/btn_perfil.png"></a>
             <a onclick="trocarTela('quizInicio')" class="btn3"><img src="@assets/Shell/PNGs/btn_quiz.png"></a>
             <a onclick="trocarTela('sobre')" class="btn4"><img src="@assets/Shell/PNGs/btn_sobre.png"></a>
+            <a onclick="trocarTela('dadosgerais')" id="btn5" class="btn5"><img
+                    src="@assets/Shell/PNGs/btn_dados.png"></a>
             <!-- <button class="glossy-button btn" onclick="trocarTela('perfil')">Olá, sereia</button> -->
         </div>
         <div class="topo">
@@ -52,11 +54,9 @@
                 <div class="faixaBubbles2">
                     <h2>Seja bem-vindo(a) ao Fundo do Mar!</h2>
                 </div>
-                <!-- <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;"> -->
 
                 <div>
-                    <div><img src="@assets/the_little_mermaid__5th__by_lokmenghong560617_dg4wfo2.gif"
-                            style="max-width: 7vw; margin:5px; float: right;"></div>
+                    <div><img src="@assets/concha.gif" style="max-width: 7vw; margin:5px; float: right;"></div>
                     <p class="textoImg">
                         Aqui, a magia do fundo do mar se encontra com a nostalgia de uma história que marcou gerações.
                         Para mim,
@@ -71,6 +71,7 @@
                         O oceano está chamando... você vai atender?
                     </p>
                 </div>
+                <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;">
             </div>
 
             <!-- CADASTRO -->
@@ -87,7 +88,7 @@
                     <label>Email</label>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="inputUsuario" maxlength="8">
+                    <input type="text" id="inputUsuario" maxlength="20">
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
@@ -116,7 +117,7 @@
                 <h2>Acesse o seu perfil</h2>
 
                 <div class="input-container">
-                    <input type="text" maxlength="8" id="inputUsuarioLogin">
+                    <input type="text" maxlength="20" id="inputUsuarioLogin">
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
@@ -129,7 +130,10 @@
                 </div>
 
                 <button class="glossy-button btn" onclick="autenticar()">Entrar</button>
-                <a onclick="trocarTela('cadastro')">Cadastre-se</a>
+                <br><br>
+                <text>Ainda não tem login?</text>
+                <br>
+                <button class="glossy-button btn" onclick="trocarTela('cadastro')">Cadastre-se</button>
             </div>
 
             <!-- QUIZ INICIO -->
@@ -162,7 +166,16 @@
                 <div class="faixaBubbles">
                     <h2>SEM QUIZ</h2>
                 </div>
-            Faça o quiz para visualizar os seus dados
+                Você ainda não fez o quiz ou começou e não finalizou.
+                <br>
+                Por favor, termine o quiz para visualizar os seus resultados.
+                <div class="faixaBubbles" height="auto">
+                    <center>
+                        <button class="glossy-button btn" onclick="trocarTela('quizInicio')">Clique aqui para fazer o
+                            quiz
+                        </button>
+                    </center>
+                </div>
             </div>
 
             <!-- PERFIL -->
@@ -182,6 +195,14 @@
 
                     <p id="resultadosPerfis"></p>
 
+                    <div class="faixaBubbles">
+                        <center>
+                            <button class="glossy-button btn" onclick="trocarTela('quizInicio')">Clique aqui para
+                                refazer o quiz
+                            </button>
+                        </center>
+                    </div>
+
                 </div>
 
 
@@ -189,39 +210,77 @@
 
             <!-- SOBRE -->
             <div style="transform: scaleX(-1);" class="esconder" id="sobre">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis unde
-                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo
-                inventore veritatis et quasi architecto beatae vitae dicta.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis unde
-                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo
-                inventore veritatis et quasi architecto beatae vitae dicta sunt voluptatem sequi nesciunt.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis unde
-                omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo
-                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                <div class="faixaBubbles2">
+                    <center>
+                        <h2>Sobre o SeaShell Heart</h2>
+                    </center>
+                </div>
+
+                <div>
+                    <div><img src="@assets/concha.gif" style="max-width: 7vw; margin:5px; float: right;"></div>
+                    <p class="textoImg">
+                        Aqui, a magia do fundo do mar se encontra com a nostalgia de uma história que marcou gerações.
+                        Para mim,
+                        <i>A Pequena Sereia</i> não é apenas uma animação: é um lembrete para nunca deixar de lado a
+                        minha criança interior — aquela que acredita em aventuras, magia e finais felizes.
+                        Mergulhe comigo neste espaço onde compartilho como essa história me inspirou a manter a
+                        curiosidade, o
+                        coração aberto e a coragem para enfrentar as marés da vida adulta.
+                        Prepare-se para navegar por memórias, explorar curiosidades e, claro, viver sua própria aventura
+                        no nosso quiz interativo.
+                        <br><br>
+                        O oceano está chamando... você vai atender?
+                    </p>
+                </div>
+                <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;">
+            </div>
+
+            <!-- DADOS GERAIS -->
+            <div style="transform: scaleX(-1);" class="esconder" id="dadosgerais">
+                <div class="faixaBubbles2">
+                    <center>
+                        <h2>🌊 Bem-vindo à Sala dos Destinos! 🐚</h2>
+                    </center>
+                </div>
+
+                <text>
+                    Você navegou pelo quiz e conquistou seu título submarino! Será que você é um destemido Descobridor
+                    dos 7 Mares, uma mística Concha Guardiã, ou um Sonhador dos Mares? 🧜‍♀️✨
+                    <br><br>
+                    Confira os resultados e veja quem mais compartilha seu destino! 🌟
+                </text>
+
+
+                <div class="conteudoPerfil">
+                    <div style="width: 90%;">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+
+                    <div class="faixaBubbles">
+                        <h2>
+                            <center>RESULTADOS DOS VISITANTES</center>
+                        </h2>
+                    </div>
+                    <div class="kpis">
+                        <div class="kpibloco kpia">
+                            Descobridor dos 7 Mares
+                            <br>
+                            <text class="valorKPI" id="valorA"></text>
+                        </div>
+                        <div class="kpibloco kpib">
+                            A Concha Guardiã
+                            <br>
+                            <text class="valorKPI" id="valorB"></text>
+                        </div>
+                        <div class="kpibloco kpic">
+                            Sonhador dos Mares
+                            <br>
+                            <text class="valorKPI" id="valorC"></text>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
 
         </div>

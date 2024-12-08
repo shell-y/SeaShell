@@ -9,6 +9,8 @@ function trocarTela(idProxTela) {
         proxTela = document.getElementById('login')
     } else if (idProxTela == 'perfil' && dadosencontrados == false) {
         return selectperfil()
+    }else if(idProxTela=='dadosgerais'){
+        coletarperfisgeral()
     }
     dadosencontrados = false
     proxTela.classList.remove('esconder') //remove a classe
@@ -231,8 +233,8 @@ function exibirResultado(a, b, c) {
     } else {
         img.src = "@assets/plakinhaC.gif"
         elemento.innerHTML = `
-        <div class="faixaBubbles">
-                        <h3>SONHADOR DAS MARÉS</h3> <!--<img src="../@assets/Clique-aqui-e-comece-a-sua-jornada.png" width="50%">-->
+        <div class="faixaBubbles" style="display:flex; justify-content: flex-start; flex-wrap: nowrap; align-items: center;">
+                        <h3>SONHADOR DAS MARÉS</h3> <img src="../@assets/perfil-equilibrado.png" width="120px" height="auto" style="margin-left:2%">
                     </div>
                     Você navega com equilíbrio entre coragem e cautela, como alguém que compreende os ciclos das marés.
                     Sabe quando arriscar para avançar e quando recuar para proteger o que importa. Esse equilíbrio faz de você uma pessoa
@@ -240,14 +242,46 @@ function exibirResultado(a, b, c) {
                     do oceano e da vida.`
     }
 }
-
-
 function atualizarGrafico(perfila, perfilb) {
     grafico.data.datasets[0].data = [perfila, perfilb]
     grafico.update()
 }
 
-// Inicializa o Chart.js depois de carregar o HTML
+function coletarperfisgeral() {
+
+    fetch(`/usuarios/coletarperfisgeral`)
+
+        //VOLTA AQUI DEPOIS DE FAZER TODA A ROTA ATÉ O BD
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log('perfis gerais coletados', JSON.stringify(json));
+
+                    var perfila = json[0].qtd
+                    var perfilb = json[1].qtd
+                    var perfilc = json[2].qtd
+                    atualizarGraficoGeral(perfila,perfilb,perfilc)
+                    return
+                })
+            } else {
+                throw "Houve um erro ao tentar coletar os perfis";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+}
+
+function atualizarGraficoGeral(perfila, perfilb, perfilc) {
+    grafico2.data.datasets[0].data = [perfila, perfilb, perfilc]
+    grafico2.update()
+    document.getElementById('valorA').innerHTML=`${perfila}`
+    document.getElementById('valorB').innerHTML=`${perfilb}`
+    document.getElementById('valorC').innerHTML=`${perfilc}`
+}
+
 const ctx = document.getElementById('myChart');
 if (ctx) {
     var grafico =
@@ -256,7 +290,7 @@ if (ctx) {
             data: {
                 labels: [
                     'Descobridor dos 7 Mares',
-                    'Concha Guardiã'
+                    'A Concha Guardiã'
                 ],
                 datasets: [{
                     // label: ['Pontuação'],
@@ -274,6 +308,58 @@ if (ctx) {
                 plugins: {
                     legend: {
                         position: 'top',
+                        labels: {
+                            color: 'white', // Define a cor da fonte
+                            font: {
+                                size: 12, // Define o tamanho da fonte (opcional)
+                                family: 'Imprima', // Define a família da fonte (opcional)
+                                // style: 'italic' // Define o estilo (normal, italic, bold)
+                            },
+                            boxWidth: 10, // Largura do ícone da legenda
+                            boxHeight: 10, // Altura do ícone da legenda
+                            // useBorderRadius: true, // Torna o ícone com bordas arredondadas
+                            borderWidth: 0.5, // Define a largura da borda dos ícones
+                            usePointStyle: true, // Define ícones redondos
+                            pointStyle: 'circle', // Estilo dos ícones (default é círculo)
+                        }
+                    }
+                },
+            }
+
+        });
+}
+
+
+// GERAL
+
+const ctx2 = document.getElementById('myChart2');
+if (ctx2) {
+    var grafico2 =
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Descobridor dos 7 Mares',
+                    'A Concha Guardiã',
+                    'Sonhador dos Mares'
+                ],
+                datasets: [{
+                    // label: ['Pontuação'],
+                    data: [],
+                    backgroundColor: [
+                        'rgb(179,139,221, 0.6)', //ROXO
+                        'rgb(19,163,164, 0.6)', //VERDE
+                        'rgb(255,98,137,0.6)' //ROSA
+                    ],
+                    borderWidth: 0.5, // Define a largura da borda
+                    // borderDash: [2, 2], // Define o padrão da linha pontilhada
+                }]
+            },
+
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom',
                         labels: {
                             color: 'white', // Define a cor da fonte
                             font: {

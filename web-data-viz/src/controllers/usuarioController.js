@@ -200,6 +200,25 @@ function selectperfil(req, res) {
         );
 }
 
+function coletarperfisgeral(req, res) {
+    usuarioModel.coletarperfisgeralModel()
+        //Depois de inserir o cadastro no BD (BD > models > controllers)
+        .then(
+            function (resultado) {
+                res.json(resultado); //retorna o select como json
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o select dos perfis! Erro: ",
+                    erro.sqlMessage
+                );
+                res.json(erro.sqlMessage);
+            }
+        );
+}
+
 
 module.exports = {
     autenticar,
@@ -207,5 +226,6 @@ module.exports = {
     inserirtentativa,
     inseriropcao,
     updatetentativa,
-    selectperfil
+    selectperfil,
+    coletarperfisgeral
 }

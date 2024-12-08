@@ -26,8 +26,14 @@ router.post("/updatetentativa", function (req, res) {
     usuarioController.updatetentativa(req, res);
 });
 
+//POST para inserir, GET para select
+
 router.get("/selectperfil/:idusuario", function (req, res) {
     usuarioController.selectperfil(req, res);
+});
+
+router.get("/coletarperfisgeral", function (req, res) {
+    usuarioController.coletarperfisgeral(req, res);
 });
 
 module.exports = router;
