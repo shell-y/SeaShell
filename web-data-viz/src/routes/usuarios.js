@@ -14,4 +14,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/inserirtentativa", function (req, res) {
+    usuarioController.inserirtentativa(req, res);
+});
+
+router.post("/inseriropcao", function (req, res) {
+    usuarioController.inseriropcao(req, res);
+});
+
 module.exports = router;

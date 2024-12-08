@@ -24,7 +24,35 @@ function cadastrarModel(nome, email, usuario, senha) {
     return database.executar(instrucaoSql);
 }
 
+// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
+function inserirtentativaModel(fkusuario,idquiz) {
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        INSERT INTO tentativas (fkusuario, fkquiz) VALUES ('${fkusuario}', '${idquiz}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
+function inseriropcaoModel(fkperguntas,fkquiz,fkusuario,alternativa) {
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+        INSERT INTO opcoes VALUES ('${fkperguntas}','${fkquiz}',
+        (select max(idtentativa) from tentativas where fkusuario=${fkusuario})
+        ,'${fkusuario}','${alternativa}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrarModel
+    cadastrarModel,
+    inserirtentativaModel,
+    inseriropcaoModel
 };

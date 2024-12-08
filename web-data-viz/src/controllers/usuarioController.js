@@ -1,5 +1,6 @@
+//rota > controller > model > database
+
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
 
@@ -85,7 +86,68 @@ function cadastrar(req, res) {
     }
 }
 
+function inserirtentativa(req, res) {
+
+    console.log(req.body);
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var fkusuario = req.body.fkusuarioServer;
+    var idquiz = req.body.idquizServer;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.inserirtentativaModel(fkusuario,idquiz)
+            //Depois de inserir o cadastro no BD (BD > models > controllers)
+            .then(
+                function (resultado) {
+                    res.json(resultado); //retorna o select como json
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o insert! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.json(erro.sqlMessage);
+                }
+            );
+}
+
+function inseriropcao(req, res) {
+
+    console.log(req.body);
+
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var fkperguntas = req.body.fkperguntaServer;
+    var fkquiz = req.body.fkquizServer;
+    var fkusuario = req.body.fkusuarioServer;
+    var alternativa = req.body.alternativaServer;
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.inseriropcaoModel(fkperguntas,fkquiz,fkusuario,alternativa)
+            //Depois de inserir o cadastro no BD (BD > models > controllers)
+            .then(
+                function (resultado) {
+                    res.json(resultado); //retorna o select como json
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o insert das alternativas! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.json(erro.sqlMessage);
+                }
+            );
+    }
+    
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    inserirtentativa,
+    inseriropcao
 }

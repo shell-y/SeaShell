@@ -24,12 +24,12 @@
 
     <div class="container">
         <div class="logo">
-            <a href="SeaShellHeart.html"><img src="@assets/Shell/LOGO.png"></a>
+            <a href="index.html"><img src="@assets/Shell/LOGO.png"></a>
         </div>
 
         <div class="menu">
             <a onclick="trocarTela('home')" id="btn1" class="btn1"><img src="@assets/Shell/PNGs/btn_home.png"></a>
-            <a onclick="trocarTela('login')" id="btn2" class="btn2"><img src="@assets/Shell/PNGs/btn_perfil.png"></a>
+            <a onclick="trocarTela('perfil')" id="btn2" class="btn2"><img src="@assets/Shell/PNGs/btn_perfil.png"></a>
             <a onclick="trocarTela('quizInicio')" class="btn3"><img src="@assets/Shell/PNGs/btn_quiz.png"></a>
             <a onclick="trocarTela('sobre')" class="btn4"><img src="@assets/Shell/PNGs/btn_sobre.png"></a>
         </div>
@@ -38,6 +38,7 @@
             <img src="@assets/pequena-sereia1a.gif" style="margin-top: 18vh; margin-left: 49vw;">
             <!-- <img src="@assets/3e4aa883b90c42b6c0554db1f21c7e77.gif" style="transform: scaleX(-1); margin-top: 20vh;" alt=""> -->
         </div>
+
         <div class="logout" alt="Clique aqui para sair" onclick="logout()">
             <img src="@assets/linguadoTriste.gif">
             <img src="@assets/sair.png" class="sair">
@@ -145,9 +146,9 @@
                 determinarão o
                 que encontrará ao longo do caminho. Como você vai se sair nessa aventura?
                 <br>
-                <span id="openModalBtn" class="linkQuiz">
+                <span id="openModalBtn" onclick="inserirtentativa()" class="linkQuiz">
                     <img src="@assets/Clique-aqui-e-comece-a-sua-jornada.png">
-                    <img src="@assets/the_little_mermaid__6th__by_lokmenghong560617_dg4wfo5.gif"
+                    <img src="@assets/kisses.gif"
                         style="max-height: 10vh;">
                 </span>
             </div>
@@ -407,6 +408,42 @@
 
                     } else {
                         throw "Houve um erro ao tentar realizar o login!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+            return false;
+        }
+
+    function inserirtentativa() {
+            // aguardar();
+
+            //Recupere o valor da nova input pelo nome do id
+            // Agora vá para o método fetch logo abaixo
+            var idusuarioVar = sessionStorage.ID_USUARIO;
+            var idquizVar = 1;
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/inserirtentativa", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
+                body: JSON.stringify({
+                    fkusuarioServer: idusuarioVar,
+                    idquizServer: idquizVar
+                }),
+            }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        console.log('tentativa inserida')
+                    } else {
+                        throw "Houve um erro ao tentar inserir tentativa!";
                     }
                 })
                 .catch(function (resposta) {
