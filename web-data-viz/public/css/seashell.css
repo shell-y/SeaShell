@@ -142,14 +142,20 @@ body {
     background-color: rgba(100, 223, 223, 0.6);
 }
 
-button.glossy-button:hover {
+.glossy-button:hover {
     transform: scale(1.1);
     transition: 100ms;
 }
 
-button.glossy-button:active {
+.glossy-button:active {
     transform: scale(1.0);
     /* Aumenta o botão em 10% */
+}
+a.glossy-button.btn{
+    display: block;
+    text-decoration: none;
+    margin-block: 5%;
+    text-align: center;
 }
 
 /* Efeito de brilho glossy */
@@ -258,7 +264,7 @@ h2 {
 .faixaBubbles {
     /* background-image: url("https://64.media.tumblr.com/af3e0a77392e140e85fde631633cdefa/0d2d68465810e89c-15/s400x600/a15631682d8a3355094bfe779ec2670c011f04bd.gif"); */
     /* background-image: url("https://64.media.tumblr.com/db0ebe2a7cf0c58db655659f88e4d820/0d2d68465810e89c-61/s1280x1920/0c33f35f4addef2e34ec0aa1847141148257862f.gif"); */
-    background-image: url("https://64.media.tumblr.com/b0397a1e1d8915c9ab152936aa381633/0d2d68465810e89c-6d/s400x600/9e68fa9d0c3d57d1cdbd7ea695c3a58326dd4089.gif");
+    background-image: url(../@assets/bubbles.gif);
     background-repeat: repeat-x;
     /* background-size: 250px; */
     width: 100%;
@@ -419,3 +425,8 @@ h2 {
     font-size: 0.8vw;
     margin-top: 1.1vh;
   }
+
+u{
+    text-decoration: none;
+    border-bottom: 1px dashed white;
+}

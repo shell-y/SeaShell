@@ -9,7 +9,7 @@ function trocarTela(idProxTela) {
         proxTela = document.getElementById('login')
     } else if (idProxTela == 'perfil' && dadosencontrados == false) {
         return selectperfil()
-    }else if(idProxTela=='dadosgerais'){
+    } else if (idProxTela == 'dadosgerais') {
         coletarperfisgeral()
     }
     dadosencontrados = false
@@ -60,48 +60,69 @@ function logout() {
     sessionStorage.clear()
     window.location.href = 'index.html'
 }
-
+// Função para validar email usando regex
+function validarEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // ^ – Início da string.
+    // [^\s@]+ – Um ou mais caracteres que não sejam espaço ou @.
+    // @ – Um @ obrigatório.
+    // [^\s@]+ – Um ou mais caracteres que não sejam espaço ou @ (parte do domínio).
+    // \. – Um ponto obrigatório ..
+    // [^\s@]+ – Um ou mais caracteres que não sejam espaço ou @ (domínio de nível superior).
+    // $ – Fim da string.
+    return regex.test(email);
+}
 function cadastrar() {
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = inputNome.value;
     var emailVar = inputEmail.value;
     var userVar = inputUsuario.value;
     var senhaVar = document.querySelector('#inputSenhaCadastro').value;
-    console.log(senhaVar)
+    var verificarSenha = document.getElementById('inputSenhaVerificar').value;
 
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
-        body: JSON.stringify({
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            userServer: userVar,
-            senhaServer: senhaVar
-        }),
-    }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
+    if (senhaVar != verificarSenha) {
+        divErros.innerHTML = '<img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;"> <text>AS SENHAS NÃO CONFEREM</text><br>'
+        return
+    } else if (nomeVar == "" || emailVar == "" || userVar == "" || senhaVar == "") {
+        divErros.innerHTML = '<img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;"> <text>POR FAVOR, PREENCHA TODOS OS CAMPOS</text><br>'
+        return
+    } else if (!validarEmail(emailVar)) {
+      divErros.innerHTML = '<img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;"> <text>EMAIL INVÁLIDO</text><br>';
+      return
+    }
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // body: PASSANDO AS INFORMAÇÕES PRO CONTROLLER
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                userServer: userVar,
+                senhaServer: senhaVar
+            }),
+        }) //depois de route > controller > models > insere DB + o caminho de volta até o controller (DB > models > controller), segue pro then:
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-                setTimeout(() => {
-                    trocarTela('login');
-                }, "1000");
+                if (resposta.ok) {
+                    divErros.innerHTML = '<text>Cadastro realizado com sucesso!</text><br>'
+                    setTimeout(() => {
+                        trocarTela('login');
+                    }, "1000");
 
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
 }
 
 function autenticar() {
@@ -112,6 +133,10 @@ function autenticar() {
     var userVar = inputUsuarioLogin.value;
     var senhaVar = document.querySelector('#inputSenhaLogin').value;
 
+    if(userVar==""||senhaVar==""){
+        divErrosLogin.innerHTML= `<img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;"> <text>Por favor, preencha todos os campos</text><br>`
+        return
+    }
     // Enviando o valor da nova input
     fetch("/usuarios/autenticar", {
         method: "POST",
@@ -136,6 +161,7 @@ function autenticar() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.USUARIO_USUARIO = json.usuario;
                 })
+                divErrosLogin.innerHTML= `Login realizado com sucesso`
                 setTimeout(() => {
                     trocarTela('perfil');
                 }, "1000");
@@ -143,6 +169,7 @@ function autenticar() {
                 document.getElementById('logout').style.display = 'flex'
 
             } else {
+                divErrosLogin.innerHTML= `<img src="https://static.tumblr.com/rltvkjt/9lnlmr41u/th_k_atencao.gif" style="max-height:2vh; vertical-align: middle;"> <text>Houve um erro ao tentar realizar o login!</text>`
                 throw "Houve um erro ao tentar realizar o login!";
             }
         })
@@ -262,7 +289,7 @@ function coletarperfisgeral() {
                     var perfila = json[0].qtd
                     var perfilb = json[1].qtd
                     var perfilc = json[2].qtd
-                    atualizarGraficoGeral(perfila,perfilb,perfilc)
+                    atualizarGraficoGeral(perfila, perfilb, perfilc)
                     return
                 })
             } else {
@@ -277,9 +304,9 @@ function coletarperfisgeral() {
 function atualizarGraficoGeral(perfila, perfilb, perfilc) {
     grafico2.data.datasets[0].data = [perfila, perfilb, perfilc]
     grafico2.update()
-    document.getElementById('valorA').innerHTML=`${perfila}`
-    document.getElementById('valorB').innerHTML=`${perfilb}`
-    document.getElementById('valorC').innerHTML=`${perfilc}`
+    document.getElementById('valorA').innerHTML = `${perfila}`
+    document.getElementById('valorB').innerHTML = `${perfilb}`
+    document.getElementById('valorC').innerHTML = `${perfilc}`
 }
 
 const ctx = document.getElementById('myChart');
@@ -380,3 +407,6 @@ if (ctx2) {
 
         });
 }
+
+
+

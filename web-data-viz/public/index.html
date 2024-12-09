@@ -22,6 +22,9 @@
     </div>
 
 
+
+
+
     <div class="container">
         <div class="logo">
             <a href="index.html"><img src="@assets/Shell/LOGO.png"></a>
@@ -71,7 +74,7 @@
                         O oceano está chamando... você vai atender?
                     </p>
                 </div>
-                <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;">
+                <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 70%;">
             </div>
 
             <!-- CADASTRO -->
@@ -92,16 +95,20 @@
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
+
                     <input type="password" id="inputSenhaCadastro" style="width: 90% !important;"
                         onkeyup="verificarSenha()" maxlength="8">
+
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png" id="idVisualizar"
                         onclick="verSenha('inputSenhaCadastro','idVisualizar')"
                         style="cursor: pointer; width:20px; filter: invert();">
                 </div>
                 <div class="input-container">
+
                     <input type="password" id="inputSenhaVerificar" style="width: 90% !important;"
                         onkeyup="verificarSenha()" maxlength="8">
+
                     <label id="labelVerificar">Confirme a senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
                         id="idVisualizarVerificar" onclick="verSenha('inputSenhaVerificar','idVisualizarVerificar')"
@@ -109,6 +116,12 @@
                 </div>
 
                 <button class="glossy-button btn" onclick="cadastrar()">Cadastrar</button>
+
+                <div id="divErros"></div>
+
+                <center><div style="background-image:url(@assets/bubbles.gif);"><img src="@assets/rodapeAriel.gif" style="height: 100px; margin-block: 2%;"></div></center>
+
+
             </div>
 
             <!-- LOGIN -->
@@ -121,8 +134,8 @@
                     <label>Usuário</label>
                 </div>
                 <div class="input-container">
-                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;" maxlength="8"
-                        onkeyup="verificarSenha()">
+                    <input type="password" id="inputSenhaLogin" style="width: 90% !important;" maxlength="8">
+
                     <label>Senha</label>
                     <img src="https://icons.veryicon.com/png/o/construction-tools/tool-1/eye-61.png"
                         id="idVisualizarLogin" onclick="verSenha('inputSenhaLogin','idVisualizarLogin')"
@@ -130,10 +143,21 @@
                 </div>
 
                 <button class="glossy-button btn" onclick="autenticar()">Entrar</button>
-                <br><br>
-                <text>Ainda não tem login?</text>
-                <br>
-                <button class="glossy-button btn" onclick="trocarTela('cadastro')">Cadastre-se</button>
+
+                <div id="divErrosLogin"></div>
+
+
+                <center>
+    <div style="border: 1px dashed white; padding:2%;border-radius: 20px; width: auto; margin-block:5%;background-image: url(https://64.media.tumblr.com/b0397a1e1d8915c9ab152936aa381633/0d2d68465810e89c-6d/s400x600/9e68fa9d0c3d57d1cdbd7ea695c3a58326dd4089.gif);">
+                        <img src="@assets/arielBrava.gif" style="max-height: 90px; vertical-align: middle;">
+                        <text style="font-size: larger; font-weight: bold;">Ainda não tem login?</text>
+                        <br>
+                        <center><button class="glossy-button btn" onclick="trocarTela('cadastro')" style="width:80%;">Cadastre-se</button>
+                        </center>
+                    </div>
+                </center>
+
+
             </div>
 
             <!-- QUIZ INICIO -->
@@ -176,6 +200,9 @@
                         </button>
                     </center>
                 </div>
+
+                <center><img src="@assets/rodapeAriel.gif" style="max-width: 100%;"></center>
+
             </div>
 
             <!-- PERFIL -->
@@ -203,6 +230,9 @@
                         </center>
                     </div>
 
+                    <center><img src="@assets/rodapeAriel.gif" style="max-width: 100%;"></center>
+
+
                 </div>
 
 
@@ -212,19 +242,51 @@
             <div style="transform: scaleX(-1);" class="esconder" id="sobre">
                 <div class="faixaBubbles2">
                     <center>
-                        <h2>Sobre o SeaShell Heart 🐚</h2>
+                        <h2>Sobre Mim</h2>
                     </center>
                 </div>
 
                 <div>
-                    <div><img src="@assets/minhafoto.jpeg" style="max-width: 7vw; margin:10px; float: right; border-radius: 20px;"></div>
+                    <div style="display: flex;flex-direction: row;align-items: center;justify-content: space-between;">
+                        <div>
+                            <img src="@assets/seloSilhueta.png" alt=""><br>
+                            <b>Meu nome:</b> Shelly <br>
+                            <b>Minha idade:</b> 29 anos <br>
+                            <b>Cidade:</b> São Paulo <br><br>
+                        </div>
+                        <div>
+                            Quer me mandar um recado? <br>
+                            <a class="glossy-button btn" style="width: 90%;" href="mailto:shelly.nadudvari@sptech.school">Fale comigo</a>
+                        </div>
+
+                    </div>
+
+                    <div class="faixaBubbles2">
+                        <center>
+                            <h2>Sobre o SeaShell Heart 🐚</h2>
+                        </center>
+                    </div>
+
+                    <div><img src="@assets/minhafoto.jpeg"
+                            style="max-width: 7vw; margin:10px; float: right; border-radius: 20px;"></div>
                     <p class="textoImg">
-                        Esse site começou como uma homenagem à minha criança interior. Desde pequena eu sou apaixonada por animações, e <i>A Pequena Sereia</i> sempre foi a minha animação favorita.
+
+                        Esse site começou como uma homenagem à minha criança interior. Desde pequena eu sou apaixonada
+                        por animações, e <i>A Pequena Sereia</i> sempre foi a minha animação favorita.
                         <br>
-                        Quando criança, a minha mãe tinha uma prima que, apesar de adulta, tinha um quarto cheio de coisas de desenho. As coisas que mais me chamavam atenção, é claro, eram as coisas da Pequena Sereia. Eu lembro de pensar comigo mesma naquela época <i>"Quando eu crescer, quero ser uma adulta legal igual a ela."</i> e esse desejo eu carrego comigo até hoje. A Pequena Sereia acabou virando um símbolo desse lema, e é isso que essa animação representa pra mim hoje em dia.
+                        Quando criança, a minha mãe tinha uma prima que, apesar de adulta, tinha um quarto cheio de
+                        coisas de desenho. As coisas que mais me chamavam atenção, é claro, eram as coisas da Pequena
+                        Sereia. Eu lembro de pensar comigo mesma naquela época <i>"Quando eu crescer, quero ser uma
+                            adulta legal igual a ela"</i> e esse desejo eu carrego comigo até hoje. A Pequena Sereia
+                        acabou virando um símbolo desse lema, e é isso que essa animação representa pra mim hoje em dia.
+                        <br>
+                        O nome <u>SeaShell Heart</u> veio de uma brincadeira com o meu próprio nome e o universo
+                        marítimo de A Pequena Sereia. <i>Seashell</i> significa concha do mar, e o <i>Heart</i>, que
+                        significa coração, complementa a ideia "Coração de concha", que, para mim, remete a um coração
+                        sempre otimista, alegre e resiliente, como o de uma criança.
                     </p>
                 </div>
-                <!-- <img src="@assets/bannerHome.jpg" style="border-radius: 15px; max-width: 100%;"> -->
+                <center><img src="@assets/rodapeAriel.gif" style="max-width: 100%;"></center>
             </div>
 
             <!-- DADOS GERAIS -->
@@ -274,6 +336,8 @@
 
 
             </div>
+
+
 
         </div>
 

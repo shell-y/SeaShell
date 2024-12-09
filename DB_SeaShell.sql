@@ -62,3 +62,6 @@ select * from tentativas;
 
 select * from opcoes;
 select * from usuario;
+
+-- delete from usuario where idusuario in (8,9,10);
+-- delete from usuario where idusuario = 11;
